@@ -37,6 +37,20 @@ public enum allColor
 
 public class Colored
 {
+    public static Dictionary<int, List<int>> getColors() {
+        var colors = new Dictionary<int, List<int>>(9);
+        colors[0] = new List<int>(3) {0, 0, 0};
+        colors[1] = new List<int>(3) {197, 15, 31};
+        colors[2] = new List<int>(3) {19, 161, 14};
+        colors[3] = new List<int>(3) {193, 156, 0};
+        colors[4] = new List<int>(3) {0, 55, 218};
+        colors[5] = new List<int>(3) {136, 23, 152};
+        colors[6] = new List<int>(3) {58, 150, 221};
+        colors[7] = new List<int>(3) {204, 204, 204};
+        colors[8] = new List<int>(3) {118, 118, 118};
+        return colors;
+    }
+
     public static string getColor(int col)
     {
         string txt = "";
