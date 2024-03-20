@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="chakimon.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="chakimon.json" />
+  </ItemGroup>
+
 </Project>
