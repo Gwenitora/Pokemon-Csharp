@@ -32,7 +32,9 @@ public enum allColor
     BgMagenta = 1 << 21,
     BgCyan = 1 << 22,
     BgWhite = 1 << 23,
-    BgGray = 1 << 24
+    BgGray = 1 << 24,
+
+    _PersoCol = 1 << 25
 }
 
 public class Colored
@@ -53,7 +55,12 @@ public class Colored
 
     public static string getColor(int col)
     {
-        string txt = "";
+        col = col & ~(1 << 26);
+        return getColor(col, 0, 0, 0, 0, 0, 0);
+    }
+    public static string getColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
+    {
+            string txt = "";
         List<string> colors = new List<string>(25) {
             "\x1b[0m",
             "\x1b[1m",
@@ -83,6 +90,17 @@ public class Colored
             "\x1b[47m",
             "\x1b[100m"
         };
+        if (((int)col & (1 << 25)) != 0)
+        {
+            if (r != 0 || g != 0 || b != 0)
+            {
+                txt += GetColorRgbSequence(r, g, b, true);
+            }
+            if (bgR != 0 || bgG != 0 || bgB != 0)
+            {
+                txt += GetColorRgbSequence(bgR, bgG, bgB, false);
+            }
+        }
         for (int i = 0; i < 25; i++)
         {
             if (((int)col & (1 << i)) != 0)
@@ -96,32 +114,65 @@ public class Colored
     {
         return getColor((int)col);
     }
+    public static string getColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
+    {
+        return getColor((int)col, r, g, b, bgR, bgG, bgB);
+    }
     public static string getStrictColor(int col)
     {
         return getColor(allColor._Reset) + getColor(col);
+    }
+    public static string getStrictColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
+    {
+        return getColor(allColor._Reset) + getColor(col, r, g, b, bgR, bgG, bgB);
     }
     public static string getStrictColor(allColor col)
     {
         return getStrictColor((int)col);
     }
+    public static string getStrictColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
+    {
+        return getStrictColor((int)col, r, g, b, bgR, bgG, bgB);
+    }
     public static void setColor(int col)
     {
         Console.Write(getColor(col));
+    }
+    public static void setColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
+    {
+        Console.Write(getColor(col, r, g, b, bgR, bgG, bgB));
     }
     public static void setColor(allColor col)
     {
         Console.Write(getColor(col));
     }
+    public static void setColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
+    {
+        Console.Write(getColor(col, r, g, b, bgR, bgG, bgB));
+    }
     public static void setStrictColor(int col)
     {
         Console.Write(getStrictColor(col));
+    }
+    public static void setStrictColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
+    {
+        Console.Write(getStrictColor(col, r, g, b, bgR, bgG, bgB));
     }
     public static void setStrictColor(allColor col)
     {
         Console.Write(getStrictColor(col));
     }
+    public static void setStrictColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
+    {
+        Console.Write(getStrictColor(col, r, g, b, bgR, bgG, bgB));
+    }
     public static void resetColor()
     {
         Console.Write(getColor(allColor._Reset));
+    }
+    private static string GetColorRgbSequence(int red, int green, int blue, bool isForeground)
+    {
+        string colorType = isForeground ? "38;2" : "48;2";
+        return $"\u001b[{colorType};{red};{green};{blue}m";
     }
 }
