@@ -7,7 +7,7 @@ class Progam
     private async static void GameLoop()
     {
         ascii asc = new ascii();
-        Preload(asc);
+        var task1 = Task.Run(() => Preload(asc));
         while (true)
         {
             var _h = Console.WindowHeight;
