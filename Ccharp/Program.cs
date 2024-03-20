@@ -2,9 +2,15 @@
 {
     public static void Main()
     {
-        ascii asc = new ascii();
-        asc.test();
+        InputManager m_input = new InputManager();
+        m_input.Test();
+        while (true)
+        {
 
-        Colored.resetColor();
+        }
+        //ascii asc = new ascii();
+        //asc.test();
+
+        //Colored.resetColor();
     }
 }
