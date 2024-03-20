@@ -1,10 +1,16 @@
-﻿class Example
+﻿using System.Xml.Linq;
+
+class Example
 {
     public static void Main()
     {
-        ascii asc = new ascii();
-        asc.test();
+        Player joueur = new Player(5, 5, 1, "Hero");
 
-        Colored.resetColor();
+
+        // Appel de la méthode PrintInfo pour afficher les informations du joueur
+        joueur.PrintInfo();
+
+        Console.ReadKey(); // Attendre une touche pour voir le résultat
+
     }
 }
