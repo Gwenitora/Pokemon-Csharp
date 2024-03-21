@@ -1,4 +1,6 @@
 ﻿using System.Drawing;
+using System.Linq;
+using System.Reflection.Metadata;
 
 public class Ascii
 {
@@ -62,6 +64,28 @@ public class Ascii
         }
         return new List<int>(4) { endH, endW, (h - endH) / 2, (w - endW) / 2};
     }
+    public List<int> ResizeImg(Bitmap img, int h, int w)
+    {
+        return ResizeImg(img.Height, img.Width, h, w);
+    }
+    public List<int> ResizeImg(string imgPath, int h, int w)
+    {
+        var Path = "../../../img/";
+        return ResizeImg(new Bitmap(Path + imgPath), h, w);
+    }
+    public List<int> ResizeImg(int height, int width)
+    {
+        return ResizeImg(height, width, Console.WindowHeight, Console.WindowWidth);
+    }
+    public List<int> ResizeImg(Bitmap img)
+    {
+        return ResizeImg(img.Height, img.Width, Console.WindowHeight, Console.WindowWidth);
+    }
+    public List<int> ResizeImg(string imgPath)
+    {
+        var Path = "../../../img/";
+        return ResizeImg(new Bitmap(Path + imgPath), Console.WindowHeight, Console.WindowWidth);
+    }
 
     private List<int> GetColorZone(Bitmap img, int x, int y, int h)
     {
@@ -122,10 +146,9 @@ public class Ascii
 
     public string LoadImg(string imgPath, int h, int w)
     {
-        h = Math.Min(h, 375);
-        h = Math.Max(h, 1);
-        w = Math.Min(w, 750);
-        w = Math.Max(w, 1);
+        var size = ResizeImg(imgPath, h, w);
+        h = size[0];
+        w = size[1];
         var Path = "../../../img/";
         string res = "";
 
@@ -136,12 +159,6 @@ public class Ascii
 
         var img = new Bitmap(Path + imgPath);
 
-        var size = ResizeImg(img.Height, img.Width, h, w);
-        var height = size[0];
-        var width = size[1];
-        var offsetH = size[2];
-        var offsetW = size[3];
-
         Console.CursorVisible = false;
 
         if (h > 0 && w > 0)
@@ -150,18 +167,10 @@ public class Ascii
             {
                 for (int j = 0; j < w; j++)
                 {
-                    if (
-                        offsetH > i || i > offsetH + height ||
-                        offsetW > j || j > offsetW + width
-                    )
-                    {
-                        res += Colored.GetStrictColor(allColor.TEXT_BLACK) + "Y";
-                        continue;
-                    }
                     var col = GetColorZone(
                         img,
-                        (int)(((float)i - (float)offsetH) / (float)height * (float)img.Height),
-                        (int)(((float)j - (float)offsetW) / (float)width * (float)img.Width),
+                        (int)((float)i / (float)h * (float)img.Height),
+                        (int)((float)j / (float)w * (float)img.Width),
                         (int)((float)img.Height / (float)h)
                     );
 
@@ -243,8 +252,12 @@ public class Ascii
         }
         return res;
     }
-    public string Adding(string img1, string imgPath2, float pctX2, float pctY2, float pctH2, float pctW2)
+    public string Adding(string img1, string imgPath2, float pctX2, float pctY2, float pctH2, float pctW2, bool keepSize = true)
     {
+        pctX2 += 50;
+        pctY2 *= -1;
+        pctY2 += 50;
+
         var imgDict1 = GetChars(img1);
         var size = GetSize(img1);
         int pctX = (int)((float)size[1] * pctX2 / 100f);
@@ -252,25 +265,60 @@ public class Ascii
         size[0] = (int)((float)size[0] * pctH2 / 100f);
         size[1] = (int)((float)size[1] * pctW2 / 100f);
 
-        string img2 = LoadImg(imgPath2, size[0], size[1]);
-        var imgDict2 = GetChars(img2);
-        for (int i = 0; i < size[0]; i++)
+        string img2;
+        try
         {
-            for (int j = 0; j < size[1]; j++)
+            img2 = LoadImg(imgPath2, size[0], size[1]);
+            size = ResizeImg(imgPath2, size[0], size[1]);
+        }
+        catch (Exception err)
+        {
+            img2 = imgPath2;
+            size = GetSize(img2);
+        }
+        var imgDict2 = GetChars(img2);
+        for (int i = -(int)((float)size[0] / 2f + .5f); i < (int)((float)size[0] / 2f); i++)
+        {
+            for (int j = -(int)((float)size[1] / 2f + .5f); j < (int)((float)size[1] / 2f); j++)
             {
-                var c = imgDict2[i][j];
+                var c = imgDict2[i + (int)((float)size[0] / 2f + .5f)][j + (int)((float)size[1] / 2f + .5f)];
                 if (c.Contains("Y")) continue;
-                imgDict1[i + pctY][j + pctX] = c;
+                if (!keepSize || (imgDict1.ContainsKey(i + pctY) && imgDict1[i + pctY].ContainsKey(j + pctX)))
+                {
+                    if (!imgDict1.ContainsKey(i + pctY))
+                    {
+                        imgDict1[i + pctY] = new Dictionary<int, string>();
+                    }
+                    imgDict1[i + pctY][j + pctX] = c;
+                }
             }
         }
         return Recompile(imgDict1);
     }
-    public string Adding(string img1, string imgPath2, float pctX2, float pctY2)
+    public string Adding(string img1, string imgPath2, float pctX2, float pctY2, bool keepSize = true)
     {
-        return Adding(img1, imgPath2, pctX2, pctY2, Console.WindowHeight, Console.WindowWidth);
+        return Adding(img1, imgPath2, pctX2, pctY2, Console.WindowHeight, Console.WindowWidth, keepSize);
     }
-    public string Adding(string img1, string imgPath2)
+    public string Adding(string img1, string imgPath2, bool keepSize = true)
     {
-        return Adding(img1, imgPath2, 0, 0, Console.WindowHeight, Console.WindowWidth);
+        return Adding(img1, imgPath2, 0, 0, Console.WindowHeight, Console.WindowWidth, keepSize);
+    }
+
+    public string GetEmptyImage(int h, int w)
+    {
+        var res = "";
+        for (int i = 0; i < h; i++)
+        {
+            for (int j = 0; j < w; j++)
+            {
+                res += Colored.GetStrictColor(allColor.TEXT_BLACK) + "Y";
+            }
+            res += "\n";
+        }
+        return res;
+    }
+    public string GetEmptyImage()
+    {
+        return GetEmptyImage(Console.WindowHeight, Console.WindowWidth);
     }
 }
