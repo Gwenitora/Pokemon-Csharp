@@ -1,8 +1,4 @@
-﻿using System.Drawing;
-using System.Numerics;
-using static System.Net.Mime.MediaTypeNames;
-
-class Progam
+﻿class Progam
 {
     private async static void GameLoop()
     {
