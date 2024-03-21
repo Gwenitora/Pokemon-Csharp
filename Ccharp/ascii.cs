@@ -10,7 +10,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class ascii
 {
-    private string chars = " ";
+    string chars = " ";
 
     public ascii()
     {
@@ -75,7 +75,7 @@ public class ascii
     {
         int w = h / 2;
 
-        float r = 0, g = 0, b = 0, l = 0;
+        float r = 0, g = 0, b = 0, a = 0, l = 0;
 
         List<int> list = new List<int>(6) {x, y, x+w, y+h, 0, 0};
 
@@ -88,6 +88,7 @@ public class ascii
                 r += col.R;
                 g += col.G;
                 b += col.B;
+                a += col.A;
                 l++;
 
                 if (x + j > list[4])
@@ -101,10 +102,10 @@ public class ascii
             }
         }
 
-        return new List<int>(3) {(int)(r / l), (int)(g / l), (int)(b / l)};
+        return new List<int>(3) {(int)(r / l), (int)(g / l), (int)(b / l), (int)(a / l) };
     }
 
-    private bool checkDir(string imgPath, int h, int w)
+    public bool checkDir(string imgPath, int h, int w)
     {
         var Path = "../../../img/ascii/";
 
@@ -118,7 +119,10 @@ public class ascii
         }
         if (!File.Exists(Path + imgPath + "/" + h + "x" + w + ".txt"))
         {
-            File.CreateText(Path + imgPath + "/" + h + "x" + w + ".txt").Close();
+            return false;
+        }
+        if (File.ReadAllText(Path + imgPath + "/" + h + "x" + w + ".txt") == "")
+        {
             return false;
         }
         return true;
@@ -126,10 +130,10 @@ public class ascii
 
     public string loadImg(string imgPath, int h, int w)
     {
-        w = Math.Min(w, 750);
-        w = Math.Max(w, 1);
         h = Math.Min(h, 375);
         h = Math.Max(h, 1);
+        w = Math.Min(w, 750);
+        w = Math.Max(w, 1);
         var Path = "../../../img/";
         string res = "";
 
@@ -159,7 +163,7 @@ public class ascii
                         offsetW > j || j > offsetW + width
                     )
                     {
-                        res += Colored.getColor(allColor._Reset) + " ";
+                        res += Colored.getStrictColor(allColor.TextBlack) + "Y";
                         continue;
                     }
                     var col = getColorZone(
@@ -168,7 +172,15 @@ public class ascii
                         (int)(((float)j - (float)offsetW) / (float)width * (float)img.Width),
                         (int)((float)img.Height / (float)h)
                     );
-                    string t = genChar(col[0], col[1], col[2]);
+
+                    string t;
+                    if (col[3] < 100)
+                    {
+                        t = Colored.getStrictColor(allColor.TextBlack) + "Y";
+                    } else
+                    {
+                        t = genChar(col[0], col[1], col[2]);
+                    }
 
                     res += t;
                 }
@@ -176,12 +188,97 @@ public class ascii
             }
         }
 
+        if (!File.Exists(Path + imgPath + "/" + h + "x" + w + ".txt"))
+        {
+            File.CreateText(Path + "ascii/" + imgPath + "/" + h + "x" + w + ".txt").Close();
+        }
         File.WriteAllText(Path + "ascii/" + imgPath + "/" + h + "x" + w + ".txt", res);
+
+        img.Dispose();
 
         return res;
     }
     public string loadImg(string imgPath)
     {
         return loadImg(imgPath, Console.WindowHeight, Console.WindowWidth);
+    }
+    public List<int> getSize(string img)
+    {
+        string l = string.Join(" ", img.Split("Y"));
+        return new List<int>(2) { l.Split("\n").Count() -2, l.Split("\n")[0].Split(" ").Count() -1 };
+    }
+    public Dictionary<int, Dictionary<int, string>> getChars(string img)
+    {
+        var size = getSize(img);
+        var l = img.Split("\n");
+
+        var res = new Dictionary<int, Dictionary<int, string>>();
+
+        for (int i = 0; i < size[0]; i++)
+        {
+            var line = l[i];
+            int c = 0;
+            for (int j = 0; j < size[1]; j++)
+            {
+                int cl = 1;
+                while (!(line.Substring(c + cl, 1) == " ") && !(line.Substring(c + cl, 1) == "Y")) cl++;
+                if (!res.ContainsKey(i))
+                {
+                    res[i] = new Dictionary<int, string>();
+                }
+                res[i][j] = line.Substring(c, cl +1);
+                c += cl + 1;
+            }
+        }
+
+        return res;
+    }
+    public string recompile(Dictionary<int, Dictionary<int, string>> dictImg)
+    {
+        string res = "";
+        var firstStep = new Dictionary<int, string>();
+        for (int i = 0; i < dictImg.Count(); i++)
+        {
+            firstStep[i] = "";
+            foreach (var j in dictImg[i])
+            {
+                firstStep[i] += j.Value;
+            }
+        }
+        foreach (var j in firstStep)
+        {
+            res += j.Value + "\n";
+        }
+        return res;
+    }
+    public string adding(string img1, string imgPath2, float pctX2, float pctY2, float pctH2, float pctW2)
+    {
+        var imgDict1 = getChars(img1);
+        var size = getSize(img1);
+        int pctX = (int)((float)size[1] * pctX2 / 100f);
+        int pctY = (int)((float)size[0] * pctY2 / 100f);
+        size[0] = (int)((float)size[0] * pctH2 / 100f);
+        size[1] = (int)((float)size[1] * pctW2 / 100f);
+
+        string img2 = loadImg(imgPath2, size[0], size[1]);
+        var imgDict2 = getChars(img2);
+        for (int i = 0; i < size[0]; i++)
+        {
+            for (int j = 0; j < size[1]; j++)
+            {
+                var c = imgDict2[i][j];
+                if (c.Contains("Y")) continue;
+                imgDict1[i + pctY][j + pctX] = c;
+            }
+        }
+        return recompile(imgDict1);
+    }
+    public string adding(string img1, string imgPath2, float pctX2, float pctY2)
+    {
+        return adding(img1, imgPath2, pctX2, pctY2, Console.WindowHeight, Console.WindowWidth);
+    }
+    public string adding(string img1, string imgPath2)
+    {
+        return adding(img1, imgPath2, 0, 0, Console.WindowHeight, Console.WindowWidth);
     }
 }
