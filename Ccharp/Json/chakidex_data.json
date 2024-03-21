@@ -1,98 +1,98 @@
 [
     {
         "name" : "Cha-pardeur",        
-        "type" : 3
+        "_type" : 3
     },
     {
         "name" : "Cha-rmeur",        
-        "type" : 0
+        "_type" : 0
     },
     {
         "name" : "Cha-man",        
-        "type" : 4
+        "_type" : 4
     },
     {
         "name" : "Cha-peau",        
-        "type" : 2
+        "_type" : 2
     },
     {
         "name" : "Cha-fouin",        
-        "type" : 4
+        "_type" : 4
     },
     {
         "name" : "Cha-lutier",        
-        "type" : 6
+        "_type" : 6
     },
     {
         "name" : "Cha-meau",        
-        "type" : 5
+        "_type" : 5
     }, 
     {
         "name" : "Cha-rnière",        
-        "type" : 6
+        "_type" : 6
     },
     {
         "name" : "Cha-teau",        
-        "type" : 6
+        "_type" : 6
     },
     {
         "name" : "Cha-pito",        
-        "type" : 1
+        "_type" : 1
     },
     {
         "name" : "Cha-grin",        
-        "type" : 0
+        "_type" : 0
     },
     {
         "name" : "Cha-llenge",        
-        "type" : 3
+        "_type" : 3
     },
     {
         "name" : "Cha-let",        
-        "type" : 4
+        "_type" : 4
     },
     {
         "name" : "Cha-loupe",        
-        "type" : 3
+        "_type" : 3
     },
     {
         "name" : "Cha-leur",        
-        "type" : 0
+        "_type" : 0
     },
     {
         "name" : "Cha-lumeau",        
-        "type" : 2
+        "_type" : 2
     },
     {
         "name" : "Cha-maille",        
-        "type" : 1
+        "_type" : 1
     },
     {
         "name" : "Cha-rgeur",        
-        "type" : 3
+        "_type" : 3
     },
     {
         "name" : "Cha-b",        
-        "type" : 2
+        "_type" : 2
     },
     {
         "name" : "Cha-bite",        
-        "type" : 5
+        "_type" : 5
     },
     {
         "name" : "Cha-sseur",        
-        "type" : 3
+        "_type" : 3
     },
     {
         "name" : "Cha-kira",        
-        "type" : 1
+        "_type" : 1
     },
     {
         "name" : "Cha-d",
-        "type" : 6
+        "_type" : 6
     },
     {
         "name" : "Cha-bbat",
-        "type" : 5
+        "_type" : 5
     }
 ]

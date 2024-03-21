@@ -1,86 +1,86 @@
 [
   {
-    "type": "Joueur",
+    "_type": "CALIN",
     "weakness": {
-      "Calin": 0,
-      "Joueur": 0,
-      "Espiegle": 1,
-      "Vif": 1,
-      "Dormeur": 0,
-      "Glouton": 2,
-      "Solide": 1
+      "CALIN": 0,
+      "JOUEUR": 0,
+      "ESPIEGLE": 1,
+      "VIF": 1,
+      "DORMEUR": 0,
+      "GLOUTON": 2,
+      "SOLIDE": 1
     }
   },
   {
-    "type": "Joueur",
+    "_type": "JOUEUR",
     "weakness": {
-      "Calin": 2,
-      "Joueur": 0,
-      "Espiegle": 0,
-      "Vif": 1,
-      "Dormeur": 1,
-      "Glouton": 0,
-      "Solide": 2
+      "CALIN": 2,
+      "JOUEUR": 0,
+      "ESPIEGLE": 0,
+      "VIF": 1,
+      "DORMEUR": 1,
+      "GLOUTON": 0,
+      "SOLIDE": 2
     }
   },
   {
-    "type": "Espiegle",
+    "_type": "ESPIEGLE",
     "weakness": {
-      "Calin": 1,
-      "Joueur": 2,
-      "Espiegle": 0,
-      "Vif": 0,
-      "Dormeur": 2,
-      "Glouton": 1,
-      "Solide": 0
+      "CALIN": 1,
+      "JOUEUR": 2,
+      "ESPIEGLE": 0,
+      "VIF": 0,
+      "DORMEUR": 2,
+      "GLOUTON": 1,
+      "SOLIDE": 0
     }
   },
   {
-    "type": "Vif",
+    "_type": "VIF",
     "weakness": {
-      "Calin": 1,
-      "Joueur": 1,
-      "Espiegle": 2,
-      "Vif": 0,
-      "Dormeur": 1,
-      "Glouton": 1,
-      "Solide": 2
+      "CALIN": 1,
+      "JOUEUR": 1,
+      "ESPIEGLE": 2,
+      "VIF": 0,
+      "DORMEUR": 1,
+      "GLOUTON": 1,
+      "SOLIDE": 2
     }
   },
   {
-    "type": "Dormeur",
+    "_type": "DORMEUR",
     "weakness": {
-      "Calin": 1,
-      "Joueur": 0,
-      "Espiegle": 1,
-      "Vif": 2,
-      "Dormeur": 0,
-      "Glouton": 1,
-      "Solide": 1
+      "CALIN": 1,
+      "JOUEUR": 0,
+      "ESPIEGLE": 1,
+      "VIF": 2,
+      "DORMEUR": 0,
+      "GLOUTON": 1,
+      "SOLIDE": 1
     }
   },
   {
-    "type": "Glouton",
+    "_type": "GLOUTON",
     "weakness": {
-      "Calin": 0,
-      "Joueur": 2,
-      "Espiegle": 1,
-      "Vif": 2,
-      "Dormeur": 1,
-      "Glouton": 0,
-      "Solide": 0
+      "CALIN": 0,
+      "JOUEUR": 2,
+      "ESPIEGLE": 1,
+      "VIF": 2,
+      "DORMEUR": 1,
+      "GLOUTON": 0,
+      "SOLIDE": 0
     }
   },
   {
-    "type": "Solide",
+    "_type": "SOLIDE",
     "weakness": {
-      "Calin": 1,
-      "Joueur": 1,
-      "Espiegle": 2,
-      "Vif": 0,
-      "Dormeur": 1,
-      "Glouton": 2,
-      "Solide": 0
+      "CALIN": 1,
+      "JOUEUR": 1,
+      "ESPIEGLE": 2,
+      "VIF": 0,
+      "DORMEUR": 1,
+      "GLOUTON": 2,
+      "SOLIDE": 0
     }
   },
 ]

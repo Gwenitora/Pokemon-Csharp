@@ -23,31 +23,30 @@ class Example
 
             foreach (var chakimon in chakidex)
             {
-                Console.WriteLine($"Nom : {chakimon.name},                  Type : {chakimon.type}");
+                Console.WriteLine($"Nom : {chakimon.name},                  type : {chakimon._type}");
             }
         }
 
 
         Console.WriteLine("\n\n\n\n\n");
 
-        string filePathTypes = "typetable_data.json";
+        string filePathtypes = "typetable_data.json";
 
-        string text2 = m_jsonFileManager.LaodFile(filePathTypes);
+        string text2 = m_jsonFileManager.LaodFile(filePathtypes);
 
         List<TypeTable> typeTables = JsonConvert.DeserializeObject<List<TypeTable>>(text2);
         foreach(var Jhonweakness in typeTables)
         {
-            Console.WriteLine($"{Jhonweakness.type}");
-            Console.WriteLine($"Calin -> {Jhonweakness.weakness[Type.Calin]}");
-            Console.WriteLine($"Joueur -> {Jhonweakness.weakness[Type.Joueur]}");
-            Console.WriteLine($"Espiegle -> {Jhonweakness.weakness[Type.Espiegle]}");
-            Console.WriteLine($"Vif -> {Jhonweakness.weakness[Type.Vif]}");
-            Console.WriteLine($"Dormeur -> {Jhonweakness.weakness[Type.Dormeur]}");
-            Console.WriteLine($"Glouton -> {Jhonweakness.weakness[Type.Glouton]}");
-            Console.WriteLine($"Solide -> {Jhonweakness.weakness[Type.Solide]}");
+            Console.WriteLine($"{Jhonweakness._type}");
+            Console.WriteLine($"Calin -> {Jhonweakness.weakness[type.CALIN]}");
+            Console.WriteLine($"Joueur -> {Jhonweakness.weakness[type.JOUEUR]}");
+            Console.WriteLine($"Espiegle -> {Jhonweakness.weakness[type.ESPIEGLE]}");
+            Console.WriteLine($"Vif -> {Jhonweakness.weakness[type.VIF]}");
+            Console.WriteLine($"Dormeur -> {Jhonweakness.weakness[type.DORMEUR]}");
+            Console.WriteLine($"Glouton -> {Jhonweakness.weakness[type.GLOUTON]}");
+            Console.WriteLine($"Solide -> {Jhonweakness.weakness[type.SOLIDE]}");
             Console.WriteLine();
         }
 
-        // ---------
     }
 }
