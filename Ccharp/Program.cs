@@ -13,7 +13,7 @@ class Progam
 
     private async static void GameLoop()
     {
-        ascii asc = new ascii();
+        Ascii asc = new Ascii();
         var task1 = Task.Run(() => Preload(asc));
         while (true)
         {
@@ -21,22 +21,21 @@ class Progam
             var _w = Console.WindowWidth;
             if (_h <= 0 || _w <= 0) continue;
             Console.SetCursorPosition(0, 0);
-            var bg = asc.loadImg(imgToLoad[0]);
-            asc.getChars(bg);
-            var res = asc.adding(bg, imgToLoad[1], 25f, 25f, 50f, 50f);
-            //var res = asc.recompile(asc.getChars(bg));
+            var bg = asc.LoadImg(imgToLoad[0]);
+            asc.GetChars(bg);
+            var res = asc.Adding(bg, imgToLoad[1], 25f, 25f, 50f, 50f);
             Console.Write(res);
         }
     }
 
     public static void Main()
     {
-        Colored.resetColor();
+        Colored.ResetColor();
         GameLoop();
-        Colored.resetColor();
+        Colored.ResetColor();
     }
 
-    private async static void Preload(ascii asc)
+    private async static void Preload(Ascii asc)
     {
         int minPix = 100 * 100;
 
@@ -59,12 +58,12 @@ class Progam
             int r1 = (new Random()).Next(imgToLoad.Count());
             int r2 = (new Random()).Next(0, 375);
             int r3 = (new Random()).Next(0, 750);
-            if (asc.checkDir(imgToLoad[r1], r2, r3) || r1 * r2 < minPix)
+            if (asc.CheckDir(imgToLoad[r1], r2, r3) || r1 * r2 < minPix)
             {
                 --i;
             } else
             {
-                asc.loadImg(imgToLoad[r1], r2, r3);
+                asc.LoadImg(imgToLoad[r1], r2, r3);
             }
         }
     }

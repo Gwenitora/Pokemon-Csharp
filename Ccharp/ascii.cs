@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Drawing;
-using System.IO;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
+﻿using System.Drawing;
 
-public class ascii
+public class Ascii
 {
     string chars = " ";
 
-    public ascii()
+    public Ascii()
     {
         var startCount = chars.Count();
         for (int i = 1; i <= startCount; i++)
@@ -21,7 +13,7 @@ public class ascii
         }
     }
 
-    private string getChar(int val)
+    private string GetChar(int val)
     {
         val = Math.Min(val, 255);
         val = Math.Max(val, 0);
@@ -30,12 +22,12 @@ public class ascii
         return chars.Substring(Math.Abs(choose), 1);
     }
 
-    private string genChar(float r, float g, float b)
+    private string GenChar(float r, float g, float b)
     {
         float moy = (r + g + b) / (float)3;
         float dist = 1 << 15;
         int saved = 0;
-        var colors = Colored.getColors();
+        var colors = Colored.GetColors();
         for (int i = 0; i < colors.Count(); i++)
         {
             var difR = r - colors[i][0];
@@ -46,10 +38,10 @@ public class ascii
             dist = _dist;
             saved = i;
         }
-        return Colored.getStrictColor((int)allColor._PersoCol + (int)allColor.TextBlack, 0, 0, 0, (int)r, (int)g, (int)b) + getChar((int)moy);
+        return Colored.GetStrictColor((int)allColor._PERSO_COLOR + (int)allColor.TEXT_BLACK, 0, 0, 0, (int)r, (int)g, (int)b) + GetChar((int)moy);
     }
 
-    public List<int> resizeImg(int height, int width, int h, int w)
+    public List<int> ResizeImg(int height, int width, int h, int w)
     {
         width *= 2;
         var ratio = ((float)height) / ((float)width);
@@ -71,7 +63,7 @@ public class ascii
         return new List<int>(4) { endH, endW, (h - endH) / 2, (w - endW) / 2};
     }
 
-    private List<int> getColorZone(Bitmap img, int x, int y, int h)
+    private List<int> GetColorZone(Bitmap img, int x, int y, int h)
     {
         int w = h / 2;
 
@@ -105,7 +97,7 @@ public class ascii
         return new List<int>(3) {(int)(r / l), (int)(g / l), (int)(b / l), (int)(a / l) };
     }
 
-    public bool checkDir(string imgPath, int h, int w)
+    public bool CheckDir(string imgPath, int h, int w)
     {
         var Path = "../../../img/ascii/";
 
@@ -128,7 +120,7 @@ public class ascii
         return true;
     }
 
-    public string loadImg(string imgPath, int h, int w)
+    public string LoadImg(string imgPath, int h, int w)
     {
         h = Math.Min(h, 375);
         h = Math.Max(h, 1);
@@ -137,14 +129,14 @@ public class ascii
         var Path = "../../../img/";
         string res = "";
 
-        if (checkDir(imgPath, h, w))
+        if (CheckDir(imgPath, h, w))
         {
             return File.ReadAllText(Path + "ascii/" + imgPath + "/" + h + "x" + w + ".txt");
         }
 
         var img = new Bitmap(Path + imgPath);
 
-        var size = resizeImg(img.Height, img.Width, h, w);
+        var size = ResizeImg(img.Height, img.Width, h, w);
         var height = size[0];
         var width = size[1];
         var offsetH = size[2];
@@ -163,10 +155,10 @@ public class ascii
                         offsetW > j || j > offsetW + width
                     )
                     {
-                        res += Colored.getStrictColor(allColor.TextBlack) + "Y";
+                        res += Colored.GetStrictColor(allColor.TEXT_BLACK) + "Y";
                         continue;
                     }
-                    var col = getColorZone(
+                    var col = GetColorZone(
                         img,
                         (int)(((float)i - (float)offsetH) / (float)height * (float)img.Height),
                         (int)(((float)j - (float)offsetW) / (float)width * (float)img.Width),
@@ -176,10 +168,10 @@ public class ascii
                     string t;
                     if (col[3] < 100)
                     {
-                        t = Colored.getStrictColor(allColor.TextBlack) + "Y";
+                        t = Colored.GetStrictColor(allColor.TEXT_BLACK) + "Y";
                     } else
                     {
-                        t = genChar(col[0], col[1], col[2]);
+                        t = GenChar(col[0], col[1], col[2]);
                     }
 
                     res += t;
@@ -198,18 +190,18 @@ public class ascii
 
         return res;
     }
-    public string loadImg(string imgPath)
+    public string LoadImg(string imgPath)
     {
-        return loadImg(imgPath, Console.WindowHeight, Console.WindowWidth);
+        return LoadImg(imgPath, Console.WindowHeight, Console.WindowWidth);
     }
-    public List<int> getSize(string img)
+    public List<int> GetSize(string img)
     {
         string l = string.Join(" ", img.Split("Y"));
         return new List<int>(2) { l.Split("\n").Count() -2, l.Split("\n")[0].Split(" ").Count() -1 };
     }
-    public Dictionary<int, Dictionary<int, string>> getChars(string img)
+    public Dictionary<int, Dictionary<int, string>> GetChars(string img)
     {
-        var size = getSize(img);
+        var size = GetSize(img);
         var l = img.Split("\n");
 
         var res = new Dictionary<int, Dictionary<int, string>>();
@@ -233,7 +225,7 @@ public class ascii
 
         return res;
     }
-    public string recompile(Dictionary<int, Dictionary<int, string>> dictImg)
+    public string Recompile(Dictionary<int, Dictionary<int, string>> dictImg)
     {
         string res = "";
         var firstStep = new Dictionary<int, string>();
@@ -251,17 +243,17 @@ public class ascii
         }
         return res;
     }
-    public string adding(string img1, string imgPath2, float pctX2, float pctY2, float pctH2, float pctW2)
+    public string Adding(string img1, string imgPath2, float pctX2, float pctY2, float pctH2, float pctW2)
     {
-        var imgDict1 = getChars(img1);
-        var size = getSize(img1);
+        var imgDict1 = GetChars(img1);
+        var size = GetSize(img1);
         int pctX = (int)((float)size[1] * pctX2 / 100f);
         int pctY = (int)((float)size[0] * pctY2 / 100f);
         size[0] = (int)((float)size[0] * pctH2 / 100f);
         size[1] = (int)((float)size[1] * pctW2 / 100f);
 
-        string img2 = loadImg(imgPath2, size[0], size[1]);
-        var imgDict2 = getChars(img2);
+        string img2 = LoadImg(imgPath2, size[0], size[1]);
+        var imgDict2 = GetChars(img2);
         for (int i = 0; i < size[0]; i++)
         {
             for (int j = 0; j < size[1]; j++)
@@ -271,14 +263,14 @@ public class ascii
                 imgDict1[i + pctY][j + pctX] = c;
             }
         }
-        return recompile(imgDict1);
+        return Recompile(imgDict1);
     }
-    public string adding(string img1, string imgPath2, float pctX2, float pctY2)
+    public string Adding(string img1, string imgPath2, float pctX2, float pctY2)
     {
-        return adding(img1, imgPath2, pctX2, pctY2, Console.WindowHeight, Console.WindowWidth);
+        return Adding(img1, imgPath2, pctX2, pctY2, Console.WindowHeight, Console.WindowWidth);
     }
-    public string adding(string img1, string imgPath2)
+    public string Adding(string img1, string imgPath2)
     {
-        return adding(img1, imgPath2, 0, 0, Console.WindowHeight, Console.WindowWidth);
+        return Adding(img1, imgPath2, 0, 0, Console.WindowHeight, Console.WindowWidth);
     }
 }
