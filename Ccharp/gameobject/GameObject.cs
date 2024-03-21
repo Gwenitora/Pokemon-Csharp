@@ -38,4 +38,7 @@ public abstract class GameObject
 
 
 
+
+
+
 //menuobject: il faut savoir a quoi il ressemble , savoir ou ils seront rangé donc quel liste ils integres , position sur la map , 
