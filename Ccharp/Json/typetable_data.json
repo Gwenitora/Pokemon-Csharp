@@ -1,0 +1,86 @@
+[
+  {
+    "type": "Joueur",
+    "weakness": {
+      "Calin": 0,
+      "Joueur": 0,
+      "Espiegle": 1,
+      "Vif": 1,
+      "Dormeur": 0,
+      "Glouton": 2,
+      "Solide": 1
+    }
+  },
+  {
+    "type": "Joueur",
+    "weakness": {
+      "Calin": 2,
+      "Joueur": 0,
+      "Espiegle": 0,
+      "Vif": 1,
+      "Dormeur": 1,
+      "Glouton": 0,
+      "Solide": 2
+    }
+  },
+  {
+    "type": "Espiegle",
+    "weakness": {
+      "Calin": 1,
+      "Joueur": 2,
+      "Espiegle": 0,
+      "Vif": 0,
+      "Dormeur": 2,
+      "Glouton": 1,
+      "Solide": 0
+    }
+  },
+  {
+    "type": "Vif",
+    "weakness": {
+      "Calin": 1,
+      "Joueur": 1,
+      "Espiegle": 2,
+      "Vif": 0,
+      "Dormeur": 1,
+      "Glouton": 1,
+      "Solide": 2
+    }
+  },
+  {
+    "type": "Dormeur",
+    "weakness": {
+      "Calin": 1,
+      "Joueur": 0,
+      "Espiegle": 1,
+      "Vif": 2,
+      "Dormeur": 0,
+      "Glouton": 1,
+      "Solide": 1
+    }
+  },
+  {
+    "type": "Glouton",
+    "weakness": {
+      "Calin": 0,
+      "Joueur": 2,
+      "Espiegle": 1,
+      "Vif": 2,
+      "Dormeur": 1,
+      "Glouton": 0,
+      "Solide": 0
+    }
+  },
+  {
+    "type": "Solide",
+    "weakness": {
+      "Calin": 1,
+      "Joueur": 1,
+      "Espiegle": 2,
+      "Vif": 0,
+      "Dormeur": 1,
+      "Glouton": 2,
+      "Solide": 0
+    }
+  },
+]
