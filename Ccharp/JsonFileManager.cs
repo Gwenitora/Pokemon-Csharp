@@ -3,7 +3,7 @@ using Newtonsoft.Json.Converters;
 
 public class JsonFileManager
 {
-    public string LaodFile(string path)
+    public string LoadFile(string path)
     {
         return File.ReadAllText($"../../../Json/{path}");
     }

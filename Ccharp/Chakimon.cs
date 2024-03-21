@@ -22,14 +22,6 @@ public class TypeTable
     public Dictionary<type, weakness> weakness { get; protected set; } = new Dictionary<type, weakness>();
 }
 
-
-public class Chakimon
-{
-    public string name { get; set; } = string.Empty;
-    public type _type { get; set; }
-    //public string description { get; set; } = string.Empty;
-}
-
 public class Attack
 {
     public string name { set; get; } = string.Empty;
@@ -38,6 +30,13 @@ public class Attack
     public int pp { set; get; }
     public float precision { set; get; }
     public int critical { set; get; }
-
     public bool isHeal { set; get; }
+}
+
+
+public class Chakimon
+{
+    public string name { get; set; } = string.Empty;
+    public type _type { get; set; }
+    public Dictionary<string, int> attacks { get; protected set; } = new Dictionary<string, int>();
 }
