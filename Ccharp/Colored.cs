@@ -6,40 +6,40 @@ using System.Threading.Tasks;
 
 public enum allColor
 {
-    _Reset = 1 << 0,
-    _Bright = 1 << 1,
-    _Dim = 1 << 2,
-    _Underscore = 1 << 3,
-    _Blink = 1 << 4,
-    _Reverse = 1 << 5,
-    _Hidden = 1 << 6,
+    _RESET = 1 << 0,
+    _BRIGHT = 1 << 1,
+    _DIM = 1 << 2,
+    _UNDERSCORE = 1 << 3,
+    _BLINK = 1 << 4,
+    _REVERSE = 1 << 5,
+    _HIDDEN = 1 << 6,
 
-    TextBlack = 1 << 7,
-    TextRed = 1 << 8,
-    TextGreen = 1 << 9,
-    TextYellow = 1 << 10,
-    TextBlue = 1 << 11,
-    TextMagenta = 1 << 12,
-    TextCyan = 1 << 13,
-    TextWhite = 1 << 14,
-    TextGray = 1 << 15,
+    TEXT_BLACK = 1 << 7,
+    TEXT_RED = 1 << 8,
+    TEXT_GREEN = 1 << 9,
+    TEXT_YELLOW = 1 << 10,
+    TEXT_BLUE = 1 << 11,
+    TEXT_MAGENTA = 1 << 12,
+    TEXT_CYAN = 1 << 13,
+    TEXT_WHITE = 1 << 14,
+    TEXT_GRAY = 1 << 15,
 
-    BgBlack = 1 << 16,
-    BgRed = 1 << 17,
-    BgGreen = 1 << 18,
-    BgYellow = 1 << 19,
-    BgBlue = 1 << 20,
-    BgMagenta = 1 << 21,
-    BgCyan = 1 << 22,
-    BgWhite = 1 << 23,
-    BgGray = 1 << 24,
+    BG_BLACK = 1 << 16,
+    BG_RED = 1 << 17,
+    BG_GREEN = 1 << 18,
+    BG_YELLOW = 1 << 19,
+    BG_BLUE = 1 << 20,
+    BG_MAGENTA = 1 << 21,
+    BG_CYAN = 1 << 22,
+    BG_WHITE = 1 << 23,
+    BG_GRAY = 1 << 24,
 
-    _PersoCol = 1 << 25
+    _PERSO_COLOR = 1 << 25
 }
 
 public class Colored
 {
-    public static Dictionary<int, List<int>> getColors() {
+    public static Dictionary<int, List<int>> GetColors() {
         var colors = new Dictionary<int, List<int>>(9);
         colors[0] = new List<int>(3) {0, 0, 0};
         colors[1] = new List<int>(3) {197, 15, 31};
@@ -53,12 +53,12 @@ public class Colored
         return colors;
     }
 
-    public static string getColor(int col)
+    public static string GetColor(int col)
     {
         col = col & ~(1 << 26);
-        return getColor(col, 0, 0, 0, 0, 0, 0);
+        return GetColor(col, 0, 0, 0, 0, 0, 0);
     }
-    public static string getColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
+    public static string GetColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
     {
             string txt = "";
         List<string> colors = new List<string>(25) {
@@ -110,65 +110,65 @@ public class Colored
         }
         return txt;
     }
-    public static string getColor(allColor col)
+    public static string GetColor(allColor col)
     {
-        return getColor((int)col);
+        return GetColor((int)col);
     }
-    public static string getColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
+    public static string GetColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
     {
-        return getColor((int)col, r, g, b, bgR, bgG, bgB);
+        return GetColor((int)col, r, g, b, bgR, bgG, bgB);
     }
-    public static string getStrictColor(int col)
+    public static string GetStrictColor(int col)
     {
-        return getColor(allColor._Reset) + getColor(col);
+        return GetColor(allColor._RESET) + GetColor(col);
     }
-    public static string getStrictColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
+    public static string GetStrictColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
     {
-        return getColor(allColor._Reset) + getColor(col, r, g, b, bgR, bgG, bgB);
+        return GetColor(allColor._RESET) + GetColor(col, r, g, b, bgR, bgG, bgB);
     }
-    public static string getStrictColor(allColor col)
+    public static string GetStrictColor(allColor col)
     {
-        return getStrictColor((int)col);
+        return GetStrictColor((int)col);
     }
-    public static string getStrictColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
+    public static string GetStrictColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
     {
-        return getStrictColor((int)col, r, g, b, bgR, bgG, bgB);
+        return GetStrictColor((int)col, r, g, b, bgR, bgG, bgB);
     }
-    public static void setColor(int col)
+    public static void SetColor(int col)
     {
-        Console.Write(getColor(col));
+        Console.Write(GetColor(col));
     }
-    public static void setColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
+    public static void SetColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
     {
-        Console.Write(getColor(col, r, g, b, bgR, bgG, bgB));
+        Console.Write(GetColor(col, r, g, b, bgR, bgG, bgB));
     }
-    public static void setColor(allColor col)
+    public static void SetColor(allColor col)
     {
-        Console.Write(getColor(col));
+        Console.Write(GetColor(col));
     }
-    public static void setColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
+    public static void SetColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
     {
-        Console.Write(getColor(col, r, g, b, bgR, bgG, bgB));
+        Console.Write(GetColor(col, r, g, b, bgR, bgG, bgB));
     }
-    public static void setStrictColor(int col)
+    public static void SetStrictColor(int col)
     {
-        Console.Write(getStrictColor(col));
+        Console.Write(GetStrictColor(col));
     }
-    public static void setStrictColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
+    public static void SetStrictColor(int col, int r, int g, int b, int bgR, int bgG, int bgB)
     {
-        Console.Write(getStrictColor(col, r, g, b, bgR, bgG, bgB));
+        Console.Write(GetStrictColor(col, r, g, b, bgR, bgG, bgB));
     }
-    public static void setStrictColor(allColor col)
+    public static void SetStrictColor(allColor col)
     {
-        Console.Write(getStrictColor(col));
+        Console.Write(GetStrictColor(col));
     }
-    public static void setStrictColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
+    public static void SetStrictColor(allColor col, int r, int g, int b, int bgR, int bgG, int bgB)
     {
-        Console.Write(getStrictColor(col, r, g, b, bgR, bgG, bgB));
+        Console.Write(GetStrictColor(col, r, g, b, bgR, bgG, bgB));
     }
-    public static void resetColor()
+    public static void ResetColor()
     {
-        Console.Write(getColor(allColor._Reset));
+        Console.Write(GetColor(allColor._RESET));
     }
     private static string GetColorRgbSequence(int red, int green, int blue, bool isForeground)
     {
