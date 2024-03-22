@@ -1,4 +1,7 @@
-﻿class Progam
+﻿using Newtonsoft.Json;
+using System.Drawing;
+
+class Progam
 {
     static List<string> imgToLoad = new List<string>()
     {
@@ -12,6 +15,18 @@
     private static void GameLoop()
     {
         Ascii m_ascii = new Ascii();
+        JsonFileManager m_jsonFileManager = new JsonFileManager();
+        Data datas = new Data();
+        Inventory inventory = new Inventory();
+
+        Item i = datas.GetItemList()[0];
+        inventory.AddInInventory(i);
+        inventory.SaveInventory(m_jsonFileManager);
+        
+        Item j = datas.GetItemList()[1];
+        inventory.AddInInventory(j);
+        inventory.SaveInventory(m_jsonFileManager);
+
         var task1 = Task.Run(() => Preload(m_ascii));
         int posX = 0;
         int posY = 0;
@@ -38,6 +53,8 @@
     public static void Main()
     {
         Colored.ResetColor();
+
+        JsonFileManager jsonFileManager = new JsonFileManager();
         GameLoop();
         Colored.ResetColor();
     }

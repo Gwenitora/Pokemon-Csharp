@@ -15,8 +15,7 @@ public class JsonFileManager
     public void SaveToJsonFile<T>(List<T> items, string file_path)
     {
         string json_string = JsonConvert.SerializeObject(items);
-        File.WriteAllText(file_path, json_string);
-        Console.WriteLine("Données enregistrées avec succès dans le fichier JSON : " + file_path);
+        File.WriteAllText($"../../../data/{file_path}", $"{json_string}");
+        Console.WriteLine($"Données enregistrées avec succès dans le fichier JSON :  + {file_path}");
     }
-
 }
