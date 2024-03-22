@@ -12,11 +12,10 @@ public class JsonFileManager
         return File.ReadAllText($"../../../Json/{path}");
     }
 
-    public void SaveToJsonFile<T>(List<T> items, string file_path)
+    public void SaveToJsonFile(object items, string file_path)
     {
         string json_string = JsonConvert.SerializeObject(items);
         File.WriteAllText(file_path, json_string);
-        Console.WriteLine("Données enregistrées avec succès dans le fichier JSON : " + file_path);
     }
 
 }

@@ -15,23 +15,20 @@
         var task1 = Task.Run(() => Preload(m_ascii));
         int posX = 0;
         int posY = 0;
+        var m_map = new Map();
+
         while (true)
         {
-            posX += Rnd.Next(-10, 11);
-            posY += Rnd.Next(-10, 11);
-
             // TODO: don't touch next paragraphe
             var _h = Console.WindowHeight;
             var _w = Console.WindowWidth;
             if (_h <= 0 || _w <= 0) continue;
-            Console.SetCursorPosition(0, 0);
 
-            var bg = m_ascii.LoadImg(imgToLoad[0]);
-            var res = m_ascii.Adding(bg, imgToLoad[1], posX, posY, 30f, 30f);
+            var res = m_map.GetDraw(m_ascii.GetEmptyImage(), m_ascii, posX, posY);
 
             // TODO: don't touch next paragraphe
-            res = m_ascii.Adding(m_ascii.GetEmptyImage(), res, 0, 0, 100f, 100f);
             Console.Write(res);
+            Console.SetCursorPosition(0, 0);
         }
     }
 
@@ -74,7 +71,8 @@
             if (m_ascii.CheckDir(imgToLoad[r1], r2, r3) || r2 * r3 < minPix)
             {
                 --i;
-            } else
+            }
+            else
             {
                 var size = m_ascii.ResizeImg(imgToLoad[r1], r2, r3);
                 r2 = size[0];
