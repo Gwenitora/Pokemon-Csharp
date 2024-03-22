@@ -398,4 +398,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Perso
-*/img/ascii/
+*/[Ii][Mm][Gg]/[Aa][Ss][Cc][Ii][Ii]/
+*/[Dd][Aa][Tt][Aa]/
