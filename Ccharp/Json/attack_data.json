@@ -1,7 +1,7 @@
 [
   {
     "name": "chatouille",
-    "type": "Espiegle",
+    "type": "ESPIEGLE",
     "damage": 10,
     "pp": 40,
     "precision": 95,
@@ -9,8 +9,8 @@
     "isHeal": 0
   },
   {
-    "name": "calinerie",
-    "type": "Calin",
+    "name": "Calinerie",
+    "type": "CALIN",
     "damage": 15,
     "pp": 30,
     "precision": 95,
@@ -19,7 +19,7 @@
   },
   {
     "name": "gratouille",
-    "type": "Vif",
+    "type": "VIF",
     "damage": 10,
     "pp": 40,
     "precision": 95,
@@ -28,7 +28,7 @@
   },
   {
     "name": "sieste",
-    "type": "Dormeur",
+    "type": "DORMEUR",
     "damage": 20,
     "pp": 20,
     "precision": 95,
@@ -37,7 +37,7 @@
   },
   {
     "name": "pouvoir lunaire",
-    "type": "Solide",
+    "type": "SOLIDE",
     "damage": 30,
     "pp": 10,
     "precision": 95,
@@ -46,7 +46,7 @@
   },
   {
     "name": "ultralaser",
-    "type": "Glouton",
+    "type": "GLOUTON",
     "damage": 40,
     "pp": 5,
     "precision": 95,
@@ -55,7 +55,7 @@
   },
   {
     "name": "telluriforce",
-    "type": "Joueur",
+    "type": "JOUEUR",
     "damage": 40,
     "pp": 5,
     "precision": 95,
@@ -64,7 +64,7 @@
   },
   {
     "name": "seisme",
-    "type": "Glouton",
+    "type": "GLOUTON",
     "damage": 35,
     "pp": 7,
     "precision": 95,
@@ -73,7 +73,7 @@
   },
   {
     "name": "feinte",
-    "type": "Vif",
+    "type": "VIF",
     "damage": 20,
     "pp": 20,
     "precision": 95,
@@ -82,7 +82,7 @@
   },
   {
     "name": "minois mignons",
-    "type": "Calin",
+    "type": "CALIN",
     "damage": 10,
     "pp": 40,
     "precision": 95,
@@ -91,7 +91,7 @@
   },
   {
     "name": "frottement",
-    "type": "Calin",
+    "type": "CALIN",
     "damage": 10,
     "pp": 40,
     "precision": 95,
@@ -100,7 +100,7 @@
   },
   {
     "name": "boule de poil",
-    "type": "Solide",
+    "type": "SOLIDE",
     "damage": 15,
     "pp": 35,
     "precision": 95,
@@ -109,7 +109,7 @@
   },
   {
     "name": "patoune",
-    "type": "Solide",
+    "type": "SOLIDE",
     "damage": 20,
     "pp": 20,
     "precision": 95,
@@ -118,7 +118,7 @@
   },
   {
     "name": "langue de chat",
-    "type": "Joueur",
+    "type": "JOUEUR",
     "damage": 20,
     "pp": 20,
     "precision": 95,
@@ -127,7 +127,7 @@
   },
   {
     "name": "miaou",
-    "type": "Espiegle",
+    "type": "ESPIEGLE",
     "damage": 15,
     "pp": 30,
     "precision": 95,
@@ -136,7 +136,7 @@
   },
   {
     "name": "doudouce",
-    "type": "Calin",
+    "type": "CALIN",
     "damage": 30,
     "pp": 10,
     "precision": 95,
@@ -145,7 +145,7 @@
   },
   {
     "name": "seduction",
-    "type": "Espiegle",
+    "type": "ESPIEGLE",
     "damage": 15,
     "pp": 30,
     "precision": 95,
@@ -154,7 +154,7 @@
   },
   {
     "name": "charingan",
-    "type": "Vif",
+    "type": "VIF",
     "damage": 25,
     "pp": 15,
     "precision": 95,
@@ -163,7 +163,7 @@
   },
   {
     "name": "attendrissement",
-    "type": "Dormeur",
+    "type": "DORMEUR",
     "damage": 20,
     "pp": 20,
     "precision": 95,
@@ -172,7 +172,7 @@
   },
   {
     "name": "toilettage",
-    "type": "Glouton",
+    "type": "GLOUTON",
     "damage": 20,
     "pp": 20,
     "precision": 95,
@@ -181,7 +181,7 @@
   },
   {
     "name": "lechouille",
-    "type": "Glouton",
+    "type": "GLOUTON",
     "damage": 25,
     "pp": 15,
     "precision": 95,
@@ -190,7 +190,7 @@
   },
   {
     "name": "caressage",
-    "type": "Calin",
+    "type": "CALIN",
     "damage": 20,
     "pp": 20,
     "precision": 95,
@@ -199,7 +199,7 @@
   },
   {
     "name": "galipette",
-    "type": "Vif",
+    "type": "VIF",
     "damage": 10,
     "pp": 40,
     "precision": 95,
@@ -208,7 +208,7 @@
   },
   {
     "name": "clin d’œil",
-    "type": "Espiegle",
+    "type": "ESPIEGLE",
     "damage": 10,
     "pp": 40,
     "precision": 95,
@@ -217,7 +217,7 @@
   },
   {
     "name": "renforcement",
-    "type": "Solide",
+    "type": "SOLIDE",
     "damage": 10,
     "pp": 40,
     "precision": 95,
@@ -226,7 +226,7 @@
   },
   {
     "name": "betise",
-    "type": "Espiegle",
+    "type": "ESPIEGLE",
     "damage": 15,
     "pp": 30,
     "precision": 95,
@@ -235,7 +235,7 @@
   },
   {
     "name": "test de gravité",
-    "type": "Joueur",
+    "type": "JOUEUR",
     "damage": 20,
     "pp": 20,
     "precision": 95,
@@ -244,7 +244,7 @@
   },
   {
     "name": "sprint",
-    "type": "Vif",
+    "type": "VIF",
     "damage": 30,
     "pp": 10,
     "precision": 95,
@@ -253,7 +253,7 @@
   },
   {
     "name": "mignonerie",
-    "type": "Joueur",
+    "type": "JOUEUR",
     "damage": 20,
     "pp": 20,
     "precision": 95,
@@ -262,7 +262,7 @@
   },
   {
     "name": "bouboule",
-    "type": "Dormeur",
+    "type": "DORMEUR",
     "damage": 30,
     "pp": 10,
     "precision": 95,
@@ -271,7 +271,7 @@
   },
   {
     "name": "repos",
-    "type": "Dormeur",
+    "type": "DORMEUR",
     "damage": 20,
     "pp": 20,
     "precision": 95,
