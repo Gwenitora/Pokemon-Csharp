@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class ascii
+/*public class ascii
 {
     private List<string> chars = new List<string>()
     {
@@ -44,7 +44,7 @@ public class ascii
         return Colored.getStrictColor((int)allColor.TextBlack << saved) + getChar((int)moy);
     }
 
-    public void test()
+    *//*public void test()
     {
         var h = Console.WindowHeight;
         var w = Console.WindowWidth;
@@ -66,5 +66,5 @@ public class ascii
             h = Console.WindowHeight;
             w = Console.WindowWidth;
         }
-    }
-}
+    }*//*
+}*/
