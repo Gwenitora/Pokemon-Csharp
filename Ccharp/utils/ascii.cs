@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.IO;
 
 public class Ascii
 {
@@ -145,10 +146,6 @@ public class Ascii
     public string LoadImg(string imgPath, int h, int w)
     {
         var size = ResizeImg(imgPath, h, w);
-        size = ResizeImg(imgPath, size[0], size[1]);
-        size = ResizeImg(imgPath, size[0], size[1]);
-        size = ResizeImg(imgPath, size[0], size[1]);
-        size = ResizeImg(imgPath, size[0], size[1]);
         h = size[0];
         w = size[1];
         var Path = "../../../img/";
@@ -177,10 +174,6 @@ public class Ascii
         string res = "";
 
         var size = ResizeImg(img, h, w);
-        size = ResizeImg(img, size[0], size[1]);
-        size = ResizeImg(img, size[0], size[1]);
-        size = ResizeImg(img, size[0], size[1]);
-        size = ResizeImg(img, size[0], size[1]);
         h = size[0];
         w = size[1];
 
@@ -227,7 +220,7 @@ public class Ascii
     public List<int> GetSize(string img)
     {
         string l = string.Join(" ", img.Split("Y"));
-        return new List<int>(2) { l.Split("\n").Count() -2, l.Split("\n")[0].Split(" ").Count() -1 };
+        return new List<int>(2) { l.Split("\n").Count() - 2, l.Split("\n")[0].Split(" ").Count() -2 };
     }
     public Dictionary<int, Dictionary<int, string>> GetChars(string img)
     {
@@ -248,7 +241,7 @@ public class Ascii
                 {
                     res[i] = new Dictionary<int, string>();
                 }
-                res[i][j] = line.Substring(c, cl +1);
+                res[i][j] = line.Substring(c, cl + 1);
                 c += cl + 1;
             }
         }
@@ -271,30 +264,51 @@ public class Ascii
         {
             res += j.Value + "\n";
         }
-        return res;
+        return res + "\n";
     }
-    public string Adding(string img1, string imgPath2, float pctX2, float pctY2, float pctH2, float pctW2, bool keepSize = true)
-    {
-        pctX2 += 50;
-        pctY2 *= -1;
-        pctY2 += 50;
 
+    private string Adding(string img1, string img2Path, float pctX2, float pctY2, float pctH2, float pctW2, bool keepSize, bool inPct)
+    {
         var imgDict1 = GetChars(img1);
         var size = GetSize(img1);
-        int pctX = (int)((float)size[1] * pctX2 / 100f);
-        int pctY = (int)((float)size[0] * pctY2 / 100f);
+        int pctX, pctY;
+        float offX = 0, offY = 0;
+
+        if (!inPct)
+        {
+            if (size[0] < size[1])
+            {
+                offX += (float)(size[1] - size[0] *2) /2f;
+                size[1] = size[0] *2;
+            } else
+            {
+                offY += (float)(size[0] - size[1] /2) /2f;
+                size[0] = size[1] /2;
+            }
+        }
+
+        pctY2 *= -1;
+        pctX2 += 50;
+        pctY2 += 50;
+
+        pctX = (int)((float)size[1] * pctX2 / 100f);
+        pctY = (int)((float)size[0] * pctY2 / 100f);
+
+        pctX += (int)offX;
+        pctY += (int)offY;
+
         size[0] = (int)((float)size[0] * pctH2 / 100f);
         size[1] = (int)((float)size[1] * pctW2 / 100f);
 
         string img2;
         try
         {
-            img2 = LoadImg(imgPath2, size[0], size[1]);
-            size = ResizeImg(imgPath2, size[0], size[1]);
+            img2 = LoadImg(img2Path, size[0], size[1]);
+            size = ResizeImg(img2Path, size[0], size[1]);
         }
         catch (Exception err)
         {
-            img2 = imgPath2;
+            img2 = img2Path;
             size = GetSize(img2);
         }
         var imgDict2 = GetChars(img2);
@@ -316,17 +330,41 @@ public class Ascii
         }
         return Recompile(imgDict1);
     }
-    public string Adding(string img1, string imgPath2, float pctX2, float pctY2, bool keepSize = true)
+
+    public string AddingPct(string img1, string img2Path, float pctX2, float pctY2, float pctH2, float pctW2, bool keepSize = true)
     {
-        return Adding(img1, imgPath2, pctX2, pctY2, Console.WindowHeight, Console.WindowWidth, keepSize);
+        return Adding(img1, img2Path, pctX2, pctY2, pctH2, pctW2, keepSize, true);
     }
-    public string Adding(string img1, string imgPath2, bool keepSize = true)
+    public string AddingPct(string img1, string img2Path, float pctX2, float pctY2, bool keepSize = true)
     {
-        return Adding(img1, imgPath2, 0, 0, Console.WindowHeight, Console.WindowWidth, keepSize);
+        return AddingPct(img1, img2Path, pctX2, pctY2, Console.WindowHeight, Console.WindowWidth, keepSize);
+    }
+    public string AddingPct(string img1, string img2Path, bool keepSize = true)
+    {
+        return AddingPct(img1, img2Path, 0, 0, Console.WindowHeight, Console.WindowWidth, keepSize);
+    }
+    public string Adding(string img1, string img2Path, float X2, float Y2, float H2, float W2, bool keepSize = true)
+    {
+        return Adding(img1, img2Path, X2, Y2, H2, W2, keepSize, false);
+    }
+    public string Adding(string img1, string img2Path, float X2, float Y2, bool keepSize = true)
+    {
+        return Adding(img1, img2Path, X2, Y2, Console.WindowHeight, Console.WindowWidth, keepSize);
+    }
+    public string Adding(string img1, string img2Path, bool keepSize = true)
+    {
+        return Adding(img1, img2Path, 0, 0, Console.WindowHeight, Console.WindowWidth, keepSize);
     }
 
     public string GetEmptyImage(int h, int w)
     {
+        var Path = "../../../img/ascii/";
+        h++;
+        if (CheckDir("EMPTIED-IMG", h, w))
+        {
+            return File.ReadAllText(Path + "EMPTIED-IMG/" + h + "x" + w + ".txt");
+        }
+
         var res = "";
         for (int i = 0; i < h; i++)
         {
@@ -336,10 +374,15 @@ public class Ascii
             }
             res += "\n";
         }
+        if (!File.Exists(Path + "EMPTIED-IMG/" + h + "x" + w + ".txt"))
+        {
+            File.CreateText(Path + "EMPTIED-IMG/" + h + "x" + w + ".txt").Close();
+        }
+        File.WriteAllText(Path + "EMPTIED-IMG/" + h + "x" + w + ".txt", res);
         return res;
     }
     public string GetEmptyImage()
     {
-        return GetEmptyImage(Console.WindowHeight, Console.WindowWidth);
+        return GetEmptyImage(Console.WindowHeight +1, Console.WindowWidth);
     }
 }
