@@ -1,0 +1,82 @@
+[
+  {
+    "Fight_object": "Laser",
+    "Joueur": 1,
+    "Vif": 0,
+    "Gloutons": 0,
+    "Calin": 0,
+    "Dormeur": 0,
+    "Espiegle": 0,
+    "Solide": 0
+  },
+  {
+    "Fight_object": "Herbe a chat",
+    "Joueur": 0,
+    "Vif": 1,
+    "Gloutons": 0,
+    "Calin": 0,
+    "Dormeur": 0,
+    "Espiegle": 0,
+    "Solide": 0
+  },
+  {
+    "Fight_object": "Croquette",
+    "Joueur": 0,
+    "Vif": 0,
+    "Gloutons": 1,
+    "Calin": 0,
+    "Dormeur": 0,
+    "Espiegle": 0,
+    "Solide": 0
+  },
+  {
+    "Fight_object": "Caresse",
+    "Joueur": 0,
+    "Vif": 0,
+    "Gloutons": 0,
+    "Calin": 1,
+    "Dormeur": 0,
+    "Espiegle": 0,
+    "Solide": 0
+  },
+  {
+    "Fight_object": "Coussin",
+    "Joueur": 0,
+    "Vif": 0,
+    "Gloutons": 0,
+    "Calin": 0,
+    "Dormeur": 1,
+    "Espiegle": 0,
+    "Solide": 0
+  },
+  {
+    "Fight_object": "Ficelle",
+    "Joueur": 0,
+    "Vif": 0,
+    "Gloutons": 0,
+    "Calin": 0,
+    "Dormeur": 0,
+    "Espiegle": 1,
+    "Solide": 0
+  },
+  {
+    "Fight_object": "Arbre a chat",
+    "Joueur": 0,
+    "Vif": 0,
+    "Gloutons": 0,
+    "Calin": 0,
+    "Dormeur": 0,
+    "Espiegle": 0,
+    "Solide": 1
+  },
+  {
+    "Fight_object": "Mega toilettage",
+    "Joueur": 1,
+    "Vif": 1,
+    "Gloutons": 1,
+    "Calin": 1,
+    "Dormeur": 1,
+    "Espiegle": 1,
+    "Solide": 1
+  }
+]
