@@ -60,7 +60,7 @@ public class ascii
                     string t = genChar(J, moy, I);
                     Console.Write(t);
                 }
-                Console.WriteLine();
+                //Console.WriteLine();
             }
             Console.SetCursorPosition(0, 0);
             h = Console.WindowHeight;
