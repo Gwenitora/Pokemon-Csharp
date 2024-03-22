@@ -1,6 +1,4 @@
 ﻿using System.Drawing;
-using System.Linq;
-using System.Reflection.Metadata;
 
 public class Ascii
 {
@@ -89,7 +87,7 @@ public class Ascii
 
     private List<int> GetColorZone(Bitmap img, int x, int y, int h)
     {
-        int w = h / 2;
+        int w = Math.Max(h / 2, 1);
 
         float r = 0, g = 0, b = 0, a = 0, l = 0;
 
@@ -147,10 +145,13 @@ public class Ascii
     public string LoadImg(string imgPath, int h, int w)
     {
         var size = ResizeImg(imgPath, h, w);
+        size = ResizeImg(imgPath, size[0], size[1]);
+        size = ResizeImg(imgPath, size[0], size[1]);
+        size = ResizeImg(imgPath, size[0], size[1]);
+        size = ResizeImg(imgPath, size[0], size[1]);
         h = size[0];
         w = size[1];
         var Path = "../../../img/";
-        string res = "";
 
         if (CheckDir(imgPath, h, w))
         {
@@ -158,6 +159,30 @@ public class Ascii
         }
 
         var img = new Bitmap(Path + imgPath);
+
+        var res = LoadImg(img, h, w);
+
+        if (!File.Exists(Path + imgPath + "/" + h + "x" + w + ".txt"))
+        {
+            File.CreateText(Path + "ascii/" + imgPath + "/" + h + "x" + w + ".txt").Close();
+        }
+        File.WriteAllText(Path + "ascii/" + imgPath + "/" + h + "x" + w + ".txt", res);
+
+        img.Dispose();
+
+        return res;
+    }
+    public string LoadImg(Bitmap img, int h, int w)
+    {
+        string res = "";
+
+        var size = ResizeImg(img, h, w);
+        size = ResizeImg(img, size[0], size[1]);
+        size = ResizeImg(img, size[0], size[1]);
+        size = ResizeImg(img, size[0], size[1]);
+        size = ResizeImg(img, size[0], size[1]);
+        h = size[0];
+        w = size[1];
 
         Console.CursorVisible = false;
 
@@ -171,7 +196,7 @@ public class Ascii
                         img,
                         (int)((float)i / (float)h * (float)img.Height),
                         (int)((float)j / (float)w * (float)img.Width),
-                        (int)((float)img.Height / (float)h)
+                        Math.Max((int)((float)img.Height / (float)h), 1)
                     );
 
                     string t;
@@ -189,19 +214,15 @@ public class Ascii
             }
         }
 
-        if (!File.Exists(Path + imgPath + "/" + h + "x" + w + ".txt"))
-        {
-            File.CreateText(Path + "ascii/" + imgPath + "/" + h + "x" + w + ".txt").Close();
-        }
-        File.WriteAllText(Path + "ascii/" + imgPath + "/" + h + "x" + w + ".txt", res);
-
-        img.Dispose();
-
         return res;
     }
     public string LoadImg(string imgPath)
     {
         return LoadImg(imgPath, Console.WindowHeight, Console.WindowWidth);
+    }
+    public string LoadImg(Bitmap img)
+    {
+        return LoadImg(img, Console.WindowHeight, Console.WindowWidth);
     }
     public List<int> GetSize(string img)
     {

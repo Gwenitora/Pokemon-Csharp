@@ -17,17 +17,16 @@
         int posY = 0;
         while (true)
         {
-            posX += Rnd.Next(-10, 11);
-            posY += Rnd.Next(-10, 11);
-
             // TODO: don't touch next paragraphe
             var _h = Console.WindowHeight;
             var _w = Console.WindowWidth;
             if (_h <= 0 || _w <= 0) continue;
             Console.SetCursorPosition(0, 0);
 
-            var bg = m_ascii.LoadImg(imgToLoad[0]);
-            var res = m_ascii.Adding(bg, imgToLoad[1], posX, posY, 30f, 30f);
+            //var bg = m_ascii.LoadImg(imgToLoad[0]);
+            //var res = m_ascii.Adding(bg, imgToLoad[1], posX, posY, 30f, 30f);
+            var classicRight = new Tile(0);
+            var res = m_ascii.LoadImg(classicRight.GetImg);
 
             // TODO: don't touch next paragraphe
             res = m_ascii.Adding(m_ascii.GetEmptyImage(), res, 0, 0, 100f, 100f);
