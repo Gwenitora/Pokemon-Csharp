@@ -1,0 +1,246 @@
+[
+    {
+        "name" : "Cha-pardeur",
+        "_type": 3,
+        "attacks": {
+          "gratouille": 1,
+          "chatouille": 1,
+          "feinte": 8,
+          "langue de chat":  18
+        }
+    },
+    {
+        "name": "Cha-rmeur",
+        "_type": 0,
+        "attacks": {
+          "minois mignons": 1,
+          "frottement": 1,
+          "seduction": 7,
+          "doudouce": 16
+        }
+    },
+    {
+        "name" : "Cha-man",
+        "_type": 4,
+        "attacks": {
+          "sieste": 1,
+          "seduction": 1,
+          "attendrissement": 8,
+          "toilettage":  16
+        }
+    },
+    {
+        "name" : "Cha-peau",
+        "_type": 2,
+        "attacks": {
+          "test de gravité": 1,
+          "renforcement": 1,
+          "telluriforce": 12,
+          "pouvoir lunaire":  19
+        }
+    },
+    {
+        "name" : "Cha-fouin",
+        "_type": 4,
+        "attacks": {
+          "attendrissement": 1,
+          "minois mignons": 1,
+          "repos": 6,
+          "bouboule":  13
+      }
+    },
+    {
+        "name" : "Cha-lutier",
+        "_type": 6,
+        "attacks": {
+          "boule de poil": 1,
+          "chatouille": 4,
+          "patoune": 10,
+          "pouvoir lunaire": 18
+      }
+    },
+    {
+        "name" : "Cha-meau",
+        "_type": 5,
+        "attacks": {
+          "renforcement": 1,
+          "miaou": 5,
+          "seisme": 18,
+          "ultralaser": 20
+      }
+    }, 
+    {
+        "name" : "Cha-rnière",
+        "_type": 6,
+        "attacks": {
+          "renforcement": 1,
+          "betise": 1,
+          "sprint": 8,
+          "repos":  14
+      }
+
+    },
+    {
+        "name" : "Cha-teau",
+        "_type": 6,
+        "attacks": {
+          "boule de poil": 1,
+          "patoune": 4,
+          "doudouce": 10,
+          "pouvoir lunaire":  17
+      }
+    },
+    {
+        "name" : "Cha-pito",
+        "_type": 1,
+        "attacks": {
+          "galipette": 1,
+          "langue de chat": 4,
+          "mignonerie": 8,
+          "telluriforce": 19
+      }
+    },
+    {
+        "name" : "Cha-grin",
+        "_type": 0,
+        "attacks": {
+          "minois mignons": 1,
+          "frottement": 1,
+          "caressage": 7,
+          "doudouce": 14
+      }
+    },
+    {
+        "name" : "Cha-llenge",
+        "_type": 3,
+        "attacks": {
+          "clin d’œil": 1,
+          "seduction": 4,
+          "test de gravité": 9,
+          "bouboule":  16
+      }
+    },
+    {
+        "name" : "Cha-let",
+        "_type": 4,
+        "attacks": {
+          "mignonerie": 1,
+          "lechouille": 4,
+          "sieste": 10,
+          "telluriforce":  20
+      }
+    },
+    {
+        "name" : "Cha-loupe",
+        "_type": 3,
+        "attacks": {
+          "seisme": 1,
+          "frottement": 5,
+          "chatouille": 10,
+          "gratouille":  15
+      }
+    },
+    {
+        "name" : "Cha-leur",
+        "_type": 0,
+        "attacks": {
+          "minois mignons": 1,
+          "frottement": 1,
+          "patoune": 6,
+          "telluriforce": 20
+      }
+    },
+    {
+        "name" : "Cha-lumeau",
+        "_type": 2,
+        "attacks": {
+          "miaou": 1,
+          "seduction": 1,
+          "attendrissement": 8,
+          "toilettage":  18
+      }
+    },
+    {
+        "name" : "Cha-maille",
+        "_type": 1,
+        "attacks": {
+          "chatouille": 1,
+          "calinerie": 4,
+          "telluriforce": 10,
+          "sieste": 16
+      }
+    },
+    {
+        "name" : "Cha-rgeur",
+        "_type": 3,
+        "attacks": {
+          "gratouille": 1,
+          "feinte": 4,
+          "charingan": 11,
+          "sprint":  17
+      }
+    },
+    {
+        "name" : "Cha-b",
+        "_type": 2,
+        "attacks": {
+          "chatouille": 1,
+          "miaou": 2,
+          "bouboule": 9,
+          "repos":  11
+      }
+    },
+    {
+        "name" : "Cha-bite",
+        "_type": 5,
+        "attacks": {
+          "doudouce": 1,
+          "pouvoir lunaire": 1,
+          "ultralaser": 1,
+          "telluriforce": 1
+
+      }
+    },
+    {
+        "name" : "Cha-sseur",
+        "_type": 3,
+        "attacks": {
+          "galipette": 1,
+          "feinte": 4,
+          "charingan": 8,
+          "sprint": 10
+      }
+
+    },
+    {
+        "name" : "Cha-kira",
+        "_type": 1,
+        "attacks": {
+          "betise": 1,
+          "test de gravité": 4,
+          "mignonerie": 7,
+          "lechouille": 13
+      }
+    },
+    {
+        "name" : "Cha-d",
+        "_type": 6,
+        "attacks": {
+          "boule de poil": 1,
+          "galipette": 1,
+          "attendrissement": 9,
+          "pouvoir lunaire": 18
+
+      }
+    },
+    {
+        "name" : "Cha-bbat",
+        "_type": 5,
+        "attacks": {
+          "seduction": 1,
+          "lechouille": 4,
+          "toilettage": 10,
+          "ultralaser": 18
+      }
+    }
+]

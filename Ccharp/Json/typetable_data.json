@@ -1,0 +1,86 @@
+[
+  {
+    "_type": "CALIN",
+    "weakness": {
+      "CALIN": 0,
+      "JOUEUR": 0,
+      "ESPIEGLE": 1,
+      "VIF": 1,
+      "DORMEUR": 0,
+      "GLOUTON": 2,
+      "SOLIDE": 1
+    }
+  },
+  {
+    "_type": "JOUEUR",
+    "weakness": {
+      "CALIN": 2,
+      "JOUEUR": 0,
+      "ESPIEGLE": 0,
+      "VIF": 1,
+      "DORMEUR": 1,
+      "GLOUTON": 0,
+      "SOLIDE": 2
+    }
+  },
+  {
+    "_type": "ESPIEGLE",
+    "weakness": {
+      "CALIN": 1,
+      "JOUEUR": 2,
+      "ESPIEGLE": 0,
+      "VIF": 0,
+      "DORMEUR": 2,
+      "GLOUTON": 1,
+      "SOLIDE": 0
+    }
+  },
+  {
+    "_type": "VIF",
+    "weakness": {
+      "CALIN": 1,
+      "JOUEUR": 1,
+      "ESPIEGLE": 2,
+      "VIF": 0,
+      "DORMEUR": 1,
+      "GLOUTON": 1,
+      "SOLIDE": 2
+    }
+  },
+  {
+    "_type": "DORMEUR",
+    "weakness": {
+      "CALIN": 1,
+      "JOUEUR": 0,
+      "ESPIEGLE": 1,
+      "VIF": 2,
+      "DORMEUR": 0,
+      "GLOUTON": 1,
+      "SOLIDE": 1
+    }
+  },
+  {
+    "_type": "GLOUTON",
+    "weakness": {
+      "CALIN": 0,
+      "JOUEUR": 2,
+      "ESPIEGLE": 1,
+      "VIF": 2,
+      "DORMEUR": 1,
+      "GLOUTON": 0,
+      "SOLIDE": 0
+    }
+  },
+  {
+    "_type": "SOLIDE",
+    "weakness": {
+      "CALIN": 1,
+      "JOUEUR": 1,
+      "ESPIEGLE": 2,
+      "VIF": 0,
+      "DORMEUR": 1,
+      "GLOUTON": 2,
+      "SOLIDE": 0
+    }
+  },
+]

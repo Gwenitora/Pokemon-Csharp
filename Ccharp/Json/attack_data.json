@@ -1,0 +1,281 @@
+[
+  {
+    "name": "chatouille",
+    "type": "ESPIEGLE",
+    "damage": 10,
+    "pp": 40,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "Calinerie",
+    "type": "CALIN",
+    "damage": 15,
+    "pp": 30,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "gratouille",
+    "type": "VIF",
+    "damage": 10,
+    "pp": 40,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "sieste",
+    "type": "DORMEUR",
+    "damage": 20,
+    "pp": 20,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 1
+  },
+  {
+    "name": "pouvoir lunaire",
+    "type": "SOLIDE",
+    "damage": 30,
+    "pp": 10,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "ultralaser",
+    "type": "GLOUTON",
+    "damage": 40,
+    "pp": 5,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "telluriforce",
+    "type": "JOUEUR",
+    "damage": 40,
+    "pp": 5,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "seisme",
+    "type": "GLOUTON",
+    "damage": 35,
+    "pp": 7,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "feinte",
+    "type": "VIF",
+    "damage": 20,
+    "pp": 20,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "minois mignons",
+    "type": "CALIN",
+    "damage": 10,
+    "pp": 40,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "frottement",
+    "type": "CALIN",
+    "damage": 10,
+    "pp": 40,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "boule de poil",
+    "type": "SOLIDE",
+    "damage": 15,
+    "pp": 35,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "patoune",
+    "type": "SOLIDE",
+    "damage": 20,
+    "pp": 20,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "langue de chat",
+    "type": "JOUEUR",
+    "damage": 20,
+    "pp": 20,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "miaou",
+    "type": "ESPIEGLE",
+    "damage": 15,
+    "pp": 30,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "doudouce",
+    "type": "CALIN",
+    "damage": 30,
+    "pp": 10,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "seduction",
+    "type": "ESPIEGLE",
+    "damage": 15,
+    "pp": 30,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "charingan",
+    "type": "VIF",
+    "damage": 25,
+    "pp": 15,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 1
+  },
+  {
+    "name": "attendrissement",
+    "type": "DORMEUR",
+    "damage": 20,
+    "pp": 20,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "toilettage",
+    "type": "GLOUTON",
+    "damage": 20,
+    "pp": 20,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 1
+  },
+  {
+    "name": "lechouille",
+    "type": "GLOUTON",
+    "damage": 25,
+    "pp": 15,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "caressage",
+    "type": "CALIN",
+    "damage": 20,
+    "pp": 20,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 1
+  },
+  {
+    "name": "galipette",
+    "type": "VIF",
+    "damage": 10,
+    "pp": 40,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "clin d’œil",
+    "type": "ESPIEGLE",
+    "damage": 10,
+    "pp": 40,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "renforcement",
+    "type": "SOLIDE",
+    "damage": 10,
+    "pp": 40,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "betise",
+    "type": "ESPIEGLE",
+    "damage": 15,
+    "pp": 30,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "test de gravité",
+    "type": "JOUEUR",
+    "damage": 20,
+    "pp": 20,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "sprint",
+    "type": "VIF",
+    "damage": 30,
+    "pp": 10,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "mignonerie",
+    "type": "JOUEUR",
+    "damage": 20,
+    "pp": 20,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "bouboule",
+    "type": "DORMEUR",
+    "damage": 30,
+    "pp": 10,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 0
+  },
+  {
+    "name": "repos",
+    "type": "DORMEUR",
+    "damage": 20,
+    "pp": 20,
+    "precision": 95,
+    "critical": 12,
+    "isHeal": 1
+  }
+]
