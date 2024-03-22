@@ -14,9 +14,14 @@ public class Map
     Random Rand;
     int seed;
     List<int> debugActual;
+    int pastX;
+    int pastY;
 
     public Map()
     {
+        pastX = 0;
+        pastY = 0;
+
         debugActual = new List<int>(6) { 0, 0, 0, 0, 0, 0 };
 
         seed = 0;
@@ -38,7 +43,7 @@ public class Map
         }
 
         Console.SetCursorPosition(0, 0);
-        Generate(0, 0, 10);
+        Generate(0, 0, 15);
     }
 
     private rotationTile intToRotation(int rot)
@@ -59,6 +64,7 @@ public class Map
         }
         if (map.ContainsKey(x) && map[x].ContainsKey(y))
         {
+            GenerateAround(x, y, dist);
             return;
         }
         if (possibilities.ContainsKey(x) && possibilities[x].ContainsKey(y))
@@ -76,7 +82,6 @@ public class Map
         CheckEdition(x + 1, y);
         CheckEdition(x, y - 1);
         CheckEdition(x, y + 1);
-        json.SaveToJsonFile(possibilities, "test.json");
         //DebugCase();
         GenerateAround(x, y, dist);
     }
@@ -277,6 +282,12 @@ public class Map
 
     public string GetDraw(string bg, Ascii m_ascii, int x, int y)
     {
+        if (x != pastX || y != pastY)
+        {
+            Generate(x, y, 5);
+            pastX = x;
+            pastY = y;
+        }
         var size = m_ascii.GetSize(bg);
         var tile = m_ascii.LoadImg(tiles[map[x][y]].GetImg);
         bg = m_ascii.Adding(bg, tile, 0f, 0f, 100f, 100f);
