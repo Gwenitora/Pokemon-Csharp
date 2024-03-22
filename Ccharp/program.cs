@@ -12,7 +12,7 @@
     private static void GameLoop()
     {
         Ascii m_ascii = new Ascii();
-        //var task1 = Task.Run(() => Preload(m_ascii));
+        var task1 = Task.Run(() => Preload(m_ascii));
         int posX = 0;
         int posY = 0;
         while (true)
