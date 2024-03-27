@@ -17,7 +17,11 @@ class Progam
         Ascii m_ascii = new Ascii();
         JsonFileManager m_jsonFileManager = new JsonFileManager();
         Data datas = new Data();
-        Inventory inventory = new Inventory();
+
+        foreach (Item item in datas.GetItemList())
+        {
+            Console.WriteLine(item.GetType());
+        }
 
         var task1 = Task.Run(() => Preload(m_ascii));
         int posX = 0;

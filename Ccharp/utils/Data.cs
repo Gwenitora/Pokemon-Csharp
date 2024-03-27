@@ -7,8 +7,7 @@ public class Data
     private List<Chakimon> chakidex = new List<Chakimon>();
     private List<TypeTable> typeTable = new List<TypeTable>();
     
-    private List<ItemList> itemList = new List<ItemList>();
-    private List<Item> items = new List<Item>();
+    private List<Item> itemList = new List<Item>();
 
     private List<Team> team = new List<Team>();
     private List<AllCatchedChakimon> allCatchedChakimons = new List<AllCatchedChakimon>();
@@ -16,7 +15,7 @@ public class Data
     string attackPath = "attack_data.json";
     string chakidexPath = "chakidex_data.json";
     string typeTablePath = "typetable_data.json";
-    /*string itemsPath = "object_data.json";*/
+    string itemsPath = "object_data.json";
 
     string teamPath = "team_data.json";
     string allChakimonCatchedPath = "all_catched_chakimon_data.json";
@@ -34,22 +33,18 @@ public class Data
         string typeTableText = jsonFileManager.LoadFile(typeTablePath);
         typeTable = JsonConvert.DeserializeObject<List<TypeTable>>(typeTableText);
 
-        /*string itemsText = jsonFileManager.LoadFile(itemsPath);
-        itemList = JsonConvert.DeserializeObject<List<ItemList>>(itemsText);
-
-        foreach (ItemList item in itemList)
+        string itemsText = jsonFileManager.LoadFile(itemsPath);
+        var settings = new JsonSerializerSettings
         {
-            foreach (Item _item in item.Items) 
-            {
-                items.Add(_item);
-            }
-        }*/
+            Converters = { new ItemConverter() }
+        };
+        itemList = JsonConvert.DeserializeObject<List<Item>>(itemsText, settings);
 
-        string teamText = jsonFileManager.LoadFile(teamPath, true);
+        /*string teamText = jsonFileManager.LoadFile(teamPath, true);
         team = JsonConvert.DeserializeObject<List<Team>>(teamText);
 
         string allChakimonText = jsonFileManager.LoadFile(allChakimonCatchedPath, true);
-        allCatchedChakimons = JsonConvert.DeserializeObject<List<AllCatchedChakimon>>(allChakimonText);
+        allCatchedChakimons = JsonConvert.DeserializeObject<List<AllCatchedChakimon>>(allChakimonText);*/
     }
 
     public List<Attack> GetAttackList()
@@ -66,7 +61,7 @@ public class Data
     }
     public List<Item> GetItemList()
     {
-        return items;
+        return itemList;
     }
 
     public List<Team> GetTeamList()
