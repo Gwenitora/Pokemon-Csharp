@@ -33,10 +33,36 @@ public class Attack
     public bool isHeal { set; get; }
 }
 
-
-public class Chakimon
+public class Stats
 {
-    public string name { get; set; } = string.Empty;
-    public type _type { get; set; }
-    public Dictionary<string, int> attacks { get; protected set; } = new Dictionary<string, int>();
+    public float Attaque { get; set; }
+    public float Defense { get; set; }
+    public float Vitesse { get; set; }
+    public float Critvalue { get; set; }
+    public float Pvmax { get; set; }
+}
+
+
+public class Chakimon : GameObject
+{
+    public string Name { get; set; }
+    public int Type { get; set; }
+    public Dictionary<string, int> Attacks { get; set; }
+    public Stats Stats { get; set; } // Assure que cette propriété est bien définie
+    public int Level { get; set; }
+
+    // Constructeur révisé pour illustration
+
+    public Chakimon(float posX, float posY, int idShape, int idMap)
+    : base(posX, posY, idShape, idMap) { }
+    public void PrintInfoChakimon()
+    {
+        Console.WriteLine($"Nom: {Name}");
+        Console.WriteLine($"Position: ({PosX}, {PosY})");
+        Console.WriteLine($"IdMap: {IdMap}");
+        Console.WriteLine($"pv: {Stats.Pvmax}");
+        Console.WriteLine($"level: {Level}");
+        Console.WriteLine($"attaque: {Stats.Attaque}");
+    }
+
 }

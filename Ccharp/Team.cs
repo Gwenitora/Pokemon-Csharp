@@ -1,6 +1,6 @@
 ﻿public class ChakimonCatched
 {
-    public List<Chakimon> chakimons { get; set; }
+    public List<Chakimon> chakimons { get; set; } = new List<Chakimon>();
 
     public virtual void Add(Chakimon chakimon, AllCatchedChakimon allCatchedChakimon) { }
     public virtual void Add(Chakimon chakimon) { }
@@ -21,7 +21,7 @@
 
 public class Team : ChakimonCatched
 {
-    public List<Chakimon> chakimons { get; set; }
+    public List<Chakimon> chakimons { get; set; } = new List<Chakimon>();
 
     public override void Add(Chakimon chakimon, AllCatchedChakimon allCatchedChakimon) 
     {
@@ -43,7 +43,7 @@ public class Team : ChakimonCatched
 
 public class AllCatchedChakimon : ChakimonCatched
 {
-    public List<Chakimon> chakimons { get; set;}
+    public List<Chakimon> chakimons { get; set; } = new List<Chakimon>();
 
     public override void Add(Chakimon chakimon)
     {
