@@ -16,6 +16,6 @@
     <Folder Include="data\" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties data_4inventory__JsonSchema="https://api.airplane.dev/v0/schemas/task.json" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>

@@ -19,14 +19,6 @@ class Progam
         Data datas = new Data();
         Inventory inventory = new Inventory();
 
-        Item i = datas.GetItemList()[0];
-        inventory.AddInInventory(i);
-        inventory.SaveInventory(m_jsonFileManager);
-        
-        Item j = datas.GetItemList()[1];
-        inventory.AddInInventory(j);
-        inventory.SaveInventory(m_jsonFileManager);
-
         var task1 = Task.Run(() => Preload(m_ascii));
         int posX = 0;
         int posY = 0;
