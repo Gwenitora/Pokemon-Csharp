@@ -17,6 +17,7 @@ public class Map
     List<int> debugActual;
     int pastX;
     int pastY;
+    List<int[]> checkEdit;
 
     public Map()
     {
@@ -25,7 +26,7 @@ public class Map
 
         debugActual = new List<int>(6) { 0, 0, 0, 0, 0, 0 };
 
-        seed = 1;
+        seed = 0;
         Rand = new Random(seed);
 
         json = new JsonFileManager();
@@ -35,6 +36,8 @@ public class Map
         map = new Dictionary<int, Dictionary<int, int>>();
         grassMap = new Dictionary<int, Dictionary<int, bool>>();
         possibilities = new Dictionary<int, Dictionary<int, List<int>>>();
+
+        checkEdit = new List<int[]>();
 
         for (int i = 0; i < numTiles; i++)
         {
@@ -74,7 +77,7 @@ public class Map
             GenerateAround(x, y, dist);
             return;
         }
-        if (possibilities.ContainsKey(x) && possibilities[x].ContainsKey(y))
+        if (possibilities.ContainsKey(x) && possibilities[x].ContainsKey(y) && possibilities[x][y].Count() > 0)
         {
             var r = Rand.Next(0, possibilities[x][y].Count());
             map[x][y] = possibilities[x][y][r];
@@ -87,12 +90,30 @@ public class Map
         }
         var m_ascii = new Ascii();
 
-        CheckEdition(x - 1, y);
-        CheckEdition(x + 1, y);
-        CheckEdition(x, y - 1);
-        CheckEdition(x, y + 1);
+        checkEdit.Add(new int[2] {x, y});
+        while (checkEdit.Count() > 0)
+        {
+            CheckEdition();
+        }
         //DebugCase();
         GenerateAround(x, y, dist);
+    }
+
+    private void CheckEdition()
+    {
+        List<int[]> edit = new List<int[]>();
+        foreach (var e in checkEdit)
+        {
+            edit.Add(e);
+        }
+        checkEdit.Clear();
+        foreach (var e in edit)
+        {
+            CheckEdition(e[0] - 1, e[1]);
+            CheckEdition(e[0] + 1, e[1]);
+            CheckEdition(e[0], e[1] - 1);
+            CheckEdition(e[0], e[1] + 1);
+        }
     }
 
     private void DebugCase()
@@ -278,10 +299,7 @@ public class Map
         if (edited)
         {
             //DebugCase();
-            CheckEdition(x - 1, y);
-            CheckEdition(x + 1, y);
-            CheckEdition(x, y - 1);
-            CheckEdition(x, y + 1);
+            checkEdit.Add(new int[2] { x, y });
         }
         if (possibilities[x][y].Count() >= tiles.Count())
         {
