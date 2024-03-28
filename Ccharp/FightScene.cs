@@ -49,7 +49,6 @@ public class FightScene
                     if (chakimonEnnemy.pv == 0)
                     {
                         isFinish = true;
-                        //xpppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
                         
                     }
                     isPlayerTurnFinish = true;
@@ -57,8 +56,9 @@ public class FightScene
             }
             else
             {
-                // IA
+                IA();
                 isPlayerTurnFinish = true;
+                
             }
         }
     }
@@ -116,6 +116,24 @@ public class FightScene
                 }
                 Console.WriteLine(damage);
                 break;
+            }
+        }
+    }
+
+    public void IA()
+    {
+        Random rnd = new Random();
+        string attackChoose = chakimonEnnemy.Attacks.Keys.ElementAt(rnd.Next() % chakimonEnnemy.Attacks.Count);
+        foreach (Attack attack in allAttacks)
+        {
+            if (attack.name == chakimonEnnemy.Attacks.FirstOrDefault().Key)
+            {
+                Attack(chakimonEnnemy, chakimonAlly, attack);
+                if (chakimonAlly.pv == 0)
+                {
+                    isFinish = true;
+                    break;
+                }
             }
         }
     }
