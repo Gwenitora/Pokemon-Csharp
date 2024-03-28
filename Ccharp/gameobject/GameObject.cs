@@ -8,6 +8,8 @@ public abstract class GameObject
     public int IdShape { get; protected set; }
     public int IdMap { get; protected set; }
 
+    public Dictionary<GameObject, string> gameObjects = new Dictionary<GameObject, string>();
+
     public GameObject(float posX, float posY, int idShape, int idMap)
     {
         PosX = posX;

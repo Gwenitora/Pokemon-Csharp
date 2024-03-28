@@ -1,4 +1,7 @@
-﻿class Progam
+﻿using Newtonsoft.Json;
+using System.Drawing;
+
+class Progam
 {
     static List<string> imgToLoad = new List<string>()
     {
@@ -9,15 +12,36 @@
     static Random rnd = new Random();
     public static Random Rnd { get => rnd; }
 
+
+
     private static void GameLoop()
     {
         Ascii m_ascii = new Ascii();
+
+        JsonFileManager m_jsonFileManager = new JsonFileManager();
+        Data datas = new Data(m_jsonFileManager);
+        datas.GetTeamList().team.Add(datas.GetChakimonList()[2]);
+        datas.Save();
+
+
+
+        foreach (Item item in datas.GetItemList())
+        {
+            Console.WriteLine(item.GetType());
+        }
+
         var task1 = Task.Run(() => Preload(m_ascii));
         var m_map = new Map();
         var m_input = new InputManager();
 
         while (true)
         {
+            FightScene fs = new FightScene(datas, datas.GetChakimonList().First());
+            fs.FightSceneGameLoop();
+
+            posX += Rnd.Next(-10, 11);
+            posY += Rnd.Next(-10, 11);
+
             // TODO: don't touch next paragraphe
             var _h = Console.WindowHeight;
             var _w = Console.WindowWidth;
@@ -35,6 +59,9 @@
     public static void Main()
     {
         Colored.ResetColor();
+
+        JsonFileManager jsonFileManager = new JsonFileManager();
+
         GameLoop();
         Colored.ResetColor();
     }
