@@ -59,7 +59,7 @@ class Progam
         JsonFileManager jsonFileManager = new JsonFileManager();
         
         
-        //GameLoop();
+        GameLoop();
         Colored.ResetColor();
     }
 

@@ -53,14 +53,10 @@ public class Chakimon : GameObject
     public Dictionary<string, int> Attacks { get; set; }
     public Stats Stats { get; set; } 
     public int Level { get; set; }
-<<<<<<< Updated upstream
+    public float pv { get; set; }
 
     [JsonConstructor]
     public Chakimon() : base(0, 0, 0, 0) { }
-
-=======
-    public float pv { get; set; }
->>>>>>> Stashed changes
 
     public Chakimon(float posX, float posY, int idShape, int idMap)
     : base(posX, posY, idShape, idMap) { }
@@ -74,7 +70,6 @@ public class Chakimon : GameObject
         Console.WriteLine($"attaque: {Stats.Attaque}");
     }
 
-<<<<<<< Updated upstream
     public Chakimon(Chakimon chakimon,int level)
         : base(0,0,0,0)
     {
@@ -90,9 +85,6 @@ public class Chakimon : GameObject
             }
         }
     }
-}
-
-=======
     public void TakeDamage(float damage)
     {
         if (pv < damage)
@@ -101,4 +93,3 @@ public class Chakimon : GameObject
             pv -= damage;
     }
 }
->>>>>>> Stashed changes
