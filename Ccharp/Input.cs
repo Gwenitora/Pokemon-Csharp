@@ -1,6 +1,8 @@
 using System.Drawing;
 using System;
 using System.Windows.Input;
+using System.Threading;
+using System.Security.Cryptography.Xml;
 
 public class InputManager
 {
@@ -16,8 +18,11 @@ public class InputManager
     Dictionary<ConsoleKey, KeyState>KeyStates = new Dictionary<ConsoleKey, KeyState>();
     Dictionary<ConsoleKey, KeyState>PreviousKeyStates = new Dictionary<ConsoleKey, KeyState>();
     ConsoleKeyInfo key_info;
+    bool emptiedTest;
 
-    public void Init()
+    public Point CursorPos { get => cursorPos; }
+
+    public InputManager()
     {
         KeyStates.Clear();
         KeyStates.Add(ConsoleKey.LeftArrow, KeyState.INACTIVE);
@@ -25,6 +30,8 @@ public class InputManager
         KeyStates.Add(ConsoleKey.UpArrow, KeyState.INACTIVE);
         KeyStates.Add(ConsoleKey.DownArrow, KeyState.INACTIVE);
         KeyStates.Add(ConsoleKey.Spacebar, KeyState.INACTIVE);
+
+        emptiedTest = false;
     }
 
     public void Test()
@@ -34,7 +41,7 @@ public class InputManager
     }
 
 
-    private void GetKeyState ()
+    private void GetKeyState()
     {
         PreviousKeyStates = KeyStates;
         key_info = Console.ReadKey();
@@ -44,24 +51,11 @@ public class InputManager
         KeyStates[ConsoleKey.UpArrow] = GetKeyStateHelper(ConsoleKey.UpArrow);
         KeyStates[ConsoleKey.DownArrow] = GetKeyStateHelper(ConsoleKey.DownArrow);
         KeyStates[ConsoleKey.Spacebar] = GetKeyStateHelper(ConsoleKey.Spacebar);
-
-        // --- TEST
-        /*Console.WriteLine("left arrow");
-        Console.WriteLine(KeyStates[ConsoleKey.LeftArrow]);
-        Console.WriteLine("right arrow");
-        Console.WriteLine(KeyStates[ConsoleKey.RightArrow]);
-        Console.WriteLine("up arrow");
-        Console.WriteLine(KeyStates[ConsoleKey.UpArrow]);
-        Console.WriteLine("down arrow");
-        Console.WriteLine(KeyStates[ConsoleKey.DownArrow]);
-        Console.WriteLine(ConsoleKey.Spacebar);
-        Console.WriteLine(KeyStates[ConsoleKey.Spacebar]);*/
-
     }
 
     private KeyState GetKeyStateHelper(ConsoleKey key)
     {
-        if (key_info.Key == key)
+        if (key_info.Key == key && !emptiedTest)
         {
             if (PreviousKeyStates[key] == KeyState.PRESSED || PreviousKeyStates[key] == KeyState.HELD)
             {
@@ -74,47 +68,35 @@ public class InputManager
         }
         else
         {
-            if (PreviousKeyStates[key] == KeyState.PRESSED || PreviousKeyStates[key] == KeyState.HELD)
-            {
-                return KeyState.RELEASED;
-            }
-            else
+            if (PreviousKeyStates[key] == KeyState.RELEASED || PreviousKeyStates[key] == KeyState.INACTIVE)
             {
                 return KeyState.INACTIVE;
             }
+            else
+            {
+                return KeyState.RELEASED;
+            }
         }
-    }
-
-    private Point GetCursorPos()
-    {
-        (int cursorPosX, int cursorPosY) = Console.GetCursorPosition();
-        cursorPos.X = cursorPosX;
-        cursorPos.Y = cursorPosY;
-        //Console.WriteLine(cursorPos);
-        return cursorPos;
     }
     
-    public void SetCursorPos()
+    public void SetCursorPos(Map m_map)
     {
         GetKeyState();
-        GetCursorPos();
-        if (KeyStates[ConsoleKey.LeftArrow] == KeyState.PRESSED && cursorPos.X != 0 || KeyStates[ConsoleKey.LeftArrow] == KeyState.HELD && cursorPos.X != 0)
+        if ((KeyStates[ConsoleKey.LeftArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.LeftArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.LEFT).Substring(3, 1) == " ")
         {
-            Console.SetCursorPosition(cursorPos.X - 1, cursorPos.Y);
+            cursorPos.X--;
         }
-        else if (KeyStates[ConsoleKey.RightArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.RightArrow] == KeyState.HELD)
+        else if ((KeyStates[ConsoleKey.RightArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.RightArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.RIGHT).Substring(3, 1) == " ")
         {
-            Console.SetCursorPosition(cursorPos.X + 1, cursorPos.Y);
+            cursorPos.X++;
         }
-        
-        else if (KeyStates[ConsoleKey.UpArrow] == KeyState.PRESSED && cursorPos.Y != 0 || KeyStates[ConsoleKey.UpArrow] == KeyState.HELD && cursorPos.Y !=0)
+        else if ((KeyStates[ConsoleKey.UpArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.UpArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.UP).Substring(3, 1) == " ")
         {
-            Console.SetCursorPosition(cursorPos.X, cursorPos.Y - 1);
+            cursorPos.Y++;
         }
-        
-        else if (KeyStates[ConsoleKey.DownArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.DownArrow] == KeyState.HELD)
+        else if ((KeyStates[ConsoleKey.DownArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.DownArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.DOWN).Substring(3, 1) == " ")
         {
-            Console.SetCursorPosition(cursorPos.X, cursorPos.Y + 1);
+            cursorPos.Y--;
         }
     }
 }

@@ -293,4 +293,14 @@ public class Map
         bg = m_ascii.Adding(bg, tile, 0f, 0f, 100f, 100f);
         return bg;
     }
+
+    public Tile getTile()
+    {
+        return getTile(pastX, pastY);
+    }
+
+    public Tile getTile(int x, int y)
+    {
+        return tiles[map[x][y]];
+    }
 }

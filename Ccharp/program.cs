@@ -13,9 +13,8 @@
     {
         Ascii m_ascii = new Ascii();
         var task1 = Task.Run(() => Preload(m_ascii));
-        int posX = 0;
-        int posY = 0;
         var m_map = new Map();
+        var m_input = new InputManager();
 
         while (true)
         {
@@ -24,11 +23,12 @@
             var _w = Console.WindowWidth;
             if (_h <= 0 || _w <= 0) continue;
 
-            var res = m_map.GetDraw(m_ascii.GetEmptyImage(), m_ascii, posX, posY);
+            var res = m_map.GetDraw(m_ascii.GetEmptyImage(), m_ascii, m_input.CursorPos.X, m_input.CursorPos.Y);
 
             // TODO: don't touch next paragraphe
             Console.Write(res);
             Console.SetCursorPosition(0, 0);
+            m_input.SetCursorPos(m_map);
         }
     }
 
