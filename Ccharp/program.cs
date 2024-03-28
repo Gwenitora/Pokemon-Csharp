@@ -39,9 +39,6 @@ class Progam
             FightScene fs = new FightScene(datas, datas.GetChakimonList().First());
             fs.FightSceneGameLoop();
 
-            posX += Rnd.Next(-10, 11);
-            posY += Rnd.Next(-10, 11);
-
             // TODO: don't touch next paragraphe
             var _h = Console.WindowHeight;
             var _w = Console.WindowWidth;
