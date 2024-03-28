@@ -47,7 +47,6 @@ public class SceneManager
     
     public void Fight(Data data, Chakimon chakimon)
     {
-        Console.WriteLine("Vous êtes en combat"); 
         FightScene fs = new FightScene(data, chakimon);
         fs.FightSceneGameLoop();
 
