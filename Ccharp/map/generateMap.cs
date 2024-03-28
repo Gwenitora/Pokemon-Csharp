@@ -10,6 +10,7 @@ public class Map
     JsonFileManager json;
     Dictionary<int, Tile> tiles;
     Dictionary<int, Dictionary<int, int>> map;
+    Dictionary<int, Dictionary<int, bool>> grassMap;
     Dictionary<int, Dictionary<int, List<int>>> possibilities;
     Random Rand;
     int seed;
@@ -24,7 +25,7 @@ public class Map
 
         debugActual = new List<int>(6) { 0, 0, 0, 0, 0, 0 };
 
-        seed = 0;
+        seed = 1;
         Rand = new Random(seed);
 
         json = new JsonFileManager();
@@ -32,6 +33,7 @@ public class Map
         tiles = new Dictionary<int, Tile>(numTiles * 4);
 
         map = new Dictionary<int, Dictionary<int, int>>();
+        grassMap = new Dictionary<int, Dictionary<int, bool>>();
         possibilities = new Dictionary<int, Dictionary<int, List<int>>>();
 
         for (int i = 0; i < numTiles; i++)
@@ -57,10 +59,15 @@ public class Map
     private void Generate(int x, int y, int dist)
     {
         Rand = new Random((seed ^ x) ^ y);
+        if (x == 0 && y == 0)
+        {
+            var i = 0;
+        }
 
         if (!map.ContainsKey(x))
         {
             map[x] = new Dictionary<int, int>();
+            grassMap[x] = new Dictionary<int, bool>();
         }
         if (map.ContainsKey(x) && map[x].ContainsKey(y))
         {
@@ -71,10 +78,12 @@ public class Map
         {
             var r = Rand.Next(0, possibilities[x][y].Count());
             map[x][y] = possibilities[x][y][r];
+            grassMap[x][y] = Rand.Next(0, 4) == 0;
         }
         else
         {
             map[x][y] = Rand.Next(0, tiles.Count());
+            grassMap[x][y] = Rand.Next(0, 4) == 0;
         }
         var m_ascii = new Ascii();
 
@@ -289,7 +298,7 @@ public class Map
             pastY = y;
         }
         var size = m_ascii.GetSize(bg);
-        var tile = m_ascii.LoadImg(tiles[map[x][y]].GetImg);
+        var tile = m_ascii.LoadImg(grassMap[x][y] ? tiles[map[x][y]].GetGrassImg : tiles[map[x][y]].GetImg);
         bg = m_ascii.Adding(bg, tile, 0f, 0f, 100f, 100f);
         return bg;
     }

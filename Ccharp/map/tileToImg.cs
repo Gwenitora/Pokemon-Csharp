@@ -13,14 +13,17 @@ public class Tile
 {
     Dictionary<int, string> tileAscii;
     Bitmap tileImg;
+    Bitmap grassTileImg;
     JsonFileManager json;
 
     static Color roof = Color.FromArgb(0xff, 0x80, 0x80, 0x80);
     static Color wall = Color.FromArgb(0xff, 0xa9, 0xa9, 0xa9);
     static Color floor = Color.FromArgb(0xff, 0x58, 0x29, 0x00);
+    static Color grass = Color.FromArgb(0xff, 0x00, 0x99, 0x00);
     static Color empty = Color.FromArgb(0x00, 0x00, 0x00, 0x00);
 
     public Bitmap GetImg { get => tileImg; }
+    public Bitmap GetGrassImg { get => grassTileImg; }
 
     private Dictionary<int, string> ReplaceVariants(Dictionary<int, string> toUpdate)
     {
@@ -64,6 +67,7 @@ public class Tile
     {
         int sizing = 100;
         tileImg = new Bitmap(7 * sizing, 7 * sizing);
+        grassTileImg = new Bitmap(7 * sizing, 7 * sizing);
         json = new JsonFileManager();
         tileAscii = ListToDico(JsonConvert.DeserializeObject<List<List<string>>>(json.LoadFile("map/tiles.json"))[tileId]);
         tileAscii = ReplaceVariants(tileAscii);
@@ -85,15 +89,19 @@ public class Tile
                         {
                             case "#":
                                 tileImg.SetPixel(j * sizing + kk, i * sizing + k, roof);
+                                grassTileImg.SetPixel(j * sizing + kk, i * sizing + k, roof);
                                 break;
                             case "-":
                                 tileImg.SetPixel(j * sizing + kk, i * sizing + k, wall);
+                                grassTileImg.SetPixel(j * sizing + kk, i * sizing + k, wall);
                                 break;
                             case " ":
                                 tileImg.SetPixel(j * sizing + kk, i * sizing + k, floor);
+                                grassTileImg.SetPixel(j * sizing + kk, i * sizing + k, grass);
                                 break;
                             default:
                                 tileImg.SetPixel(j * sizing + kk, i * sizing + k, empty);
+                                grassTileImg.SetPixel(j * sizing + kk, i * sizing + k, empty);
                                 break;
                         }
                     }

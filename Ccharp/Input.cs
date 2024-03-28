@@ -90,11 +90,11 @@ public class InputManager
         {
             cursorPos.X++;
         }
-        else if ((KeyStates[ConsoleKey.UpArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.UpArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.UP).Substring(3, 1) == " ")
+        else if ((KeyStates[ConsoleKey.UpArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.UpArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.DOWN).Substring(3, 1) == " ")
         {
             cursorPos.Y++;
         }
-        else if ((KeyStates[ConsoleKey.DownArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.DownArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.DOWN).Substring(3, 1) == " ")
+        else if ((KeyStates[ConsoleKey.DownArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.DownArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.UP).Substring(3, 1) == " ")
         {
             cursorPos.Y--;
         }
