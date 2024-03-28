@@ -1,33 +1,13 @@
 ﻿public class ChakimonCatched
 {
-    public List<Chakimon> chakimons { get; set; } = new List<Chakimon>();
+    public List<Chakimon> team { get; set; } = new List<Chakimon>();
+    public List<Chakimon> allCatchedChakimon { get; set; } = new List<Chakimon>();
 
-    public virtual void Add(Chakimon chakimon, AllCatchedChakimon allCatchedChakimon) { }
-    public virtual void Add(Chakimon chakimon) { }
-
-    public virtual void Replace(Chakimon chakimonToReplace, Chakimon newChakimon)
+    public void Add(Chakimon chakimon)
     {
-        chakimons.Insert(chakimons.IndexOf(chakimonToReplace), newChakimon);
-        Remove(chakimonToReplace);
-    }
-
-    public virtual void Remove(Chakimon chakimon)
-    {
-        chakimons.Remove(chakimon);
-    }
-}
-
-
-
-public class Team : ChakimonCatched
-{
-    public List<Chakimon> chakimons { get; set; } = new List<Chakimon>();
-
-    public override void Add(Chakimon chakimon, AllCatchedChakimon allCatchedChakimon) 
-    {
-        if (chakimons.Count != 6)
+        if (team.Count <= 6)
         {
-            chakimons.Add(chakimon);    
+            team.Add(chakimon);
         }
         else
         {
@@ -35,22 +15,22 @@ public class Team : ChakimonCatched
         }
     }
 
+    public void Replace(Chakimon chakimonToReplace, Chakimon newChakimon)
+    {
+        team.Insert(team.IndexOf(chakimonToReplace), newChakimon);
+        Remove(chakimonToReplace);
+    }
+
+    public virtual void Remove(Chakimon chakimon)
+    {
+        team.Remove(chakimon);
+    }
     public void SaveTeam(JsonFileManager jsonFileManager)
     {
-        jsonFileManager.SaveToJsonFile(chakimons, "team_data.json");
-    }
-}
-
-public class AllCatchedChakimon : ChakimonCatched
-{
-    public List<Chakimon> chakimons { get; set; } = new List<Chakimon>();
-
-    public override void Add(Chakimon chakimon)
-    {
-        chakimons.Add(chakimon);
+        jsonFileManager.SaveToJsonFile(team, "team_data.json");
     }
     public void SaveAllCatchedChakimon(JsonFileManager jsonFileManager)
     {
-        jsonFileManager.SaveToJsonFile(chakimons, "all_catched_chakimon_data.json");
+        jsonFileManager.SaveToJsonFile(allCatchedChakimon, "all_catched_chakimon_data.json");
     }
 }

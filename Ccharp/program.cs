@@ -12,12 +12,15 @@ class Progam
     static Random rnd = new Random();
     public static Random Rnd { get => rnd; }
 
+
+    
     private static void GameLoop()
     {
         Ascii m_ascii = new Ascii();
+        
         JsonFileManager m_jsonFileManager = new JsonFileManager();
         Data datas = new Data();
-
+        
         foreach (Item item in datas.GetItemList())
         {
             Console.WriteLine(item.GetType());

@@ -18,4 +18,9 @@ public class JsonFileManager
         File.WriteAllText($"../../../data/{file_path}", $"{json_string}");
         Console.WriteLine($"Données enregistrées avec succès dans le fichier JSON :  + {file_path}");
     }
+
+    public bool FoundFile(string path)
+    {
+        return File.Exists(path);
+    }
 }

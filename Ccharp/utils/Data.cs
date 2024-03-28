@@ -9,16 +9,14 @@ public class Data
     
     private List<Item> itemList = new List<Item>();
 
-    private List<Team> team = new List<Team>();
-    private List<AllCatchedChakimon> allCatchedChakimons = new List<AllCatchedChakimon>();
+    private ChakimonCatched chakimonCatched = new ChakimonCatched();
 
     string attackPath = "attack_data.json";
     string chakidexPath = "chakidex_data.json";
     string typeTablePath = "typetable_data.json";
     string itemsPath = "object_data.json";
 
-    string teamPath = "team_data.json";
-    string allChakimonCatchedPath = "all_catched_chakimon_data.json";
+    string chakimonCatchedPath = "chakimon_catched_data.json";
 
     public Data()
     {
@@ -40,11 +38,12 @@ public class Data
         };
         itemList = JsonConvert.DeserializeObject<List<Item>>(itemsText, settings);
 
-        /*string teamText = jsonFileManager.LoadFile(teamPath, true);
-        team = JsonConvert.DeserializeObject<List<Team>>(teamText);
-
-        string allChakimonText = jsonFileManager.LoadFile(allChakimonCatchedPath, true);
-        allCatchedChakimons = JsonConvert.DeserializeObject<List<AllCatchedChakimon>>(allChakimonText);*/
+        if (jsonFileManager.FoundFile(chakimonCatchedPath))
+        {
+            string allChakimonCatchedText = jsonFileManager.LoadFile(chakimonCatchedPath, true);
+            if (allChakimonCatchedText.Length > 0)
+                chakimonCatched = JsonConvert.DeserializeObject<ChakimonCatched>(allChakimonCatchedText);
+        }
     }
 
     public List<Attack> GetAttackList()
@@ -64,12 +63,8 @@ public class Data
         return itemList;
     }
 
-    public List<Team> GetTeamList()
+    public ChakimonCatched GetTeamList()
     {
-        return team;
-    }
-    public List<AllCatchedChakimon> GetAllCatchedChakimons()
-    {
-        return allCatchedChakimons;
+        return chakimonCatched;
     }
 }
