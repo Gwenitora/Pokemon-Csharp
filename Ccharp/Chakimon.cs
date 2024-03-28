@@ -1,3 +1,6 @@
+using System.Drawing;
+using System.Text.Json.Serialization;
+
 public enum type
 {
     CALIN,
@@ -51,7 +54,9 @@ public class Chakimon : GameObject
     public Stats Stats { get; set; } // Assure que cette propriété est bien définie
     public int Level { get; set; }
 
-    // Constructeur révisé pour illustration
+    [JsonConstructor]
+    public Chakimon() : base(0, 0, 0, 0) { }
+
 
     public Chakimon(float posX, float posY, int idShape, int idMap)
     : base(posX, posY, idShape, idMap) { }
@@ -65,4 +70,20 @@ public class Chakimon : GameObject
         Console.WriteLine($"attaque: {Stats.Attaque}");
     }
 
+    public Chakimon(Chakimon chakimon,int level)
+        : base(0,0,0,0)
+    {
+        Stats.Attaque = Stats.Attaque + level;
+        Stats.Defense = Stats.Defense + level;
+        Stats.Vitesse = Stats.Vitesse + level;
+        Stats.Pvmax = Stats.Pvmax + level;
+        foreach (var attack in chakimon.Attacks)
+        {
+            if (attack.Value == level)
+            {
+                Attacks.Add(attack.Key, attack.Value);
+            }
+        }
+    }
 }
+
