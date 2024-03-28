@@ -19,8 +19,9 @@ class Progam
         Ascii m_ascii = new Ascii();
         
         JsonFileManager m_jsonFileManager = new JsonFileManager();
-        Data datas = new Data();
-        
+        Data datas = new Data(m_jsonFileManager);
+        datas.Save();
+
         foreach (Item item in datas.GetItemList())
         {
             Console.WriteLine(item.GetType());
@@ -47,6 +48,8 @@ class Progam
             res = m_ascii.Adding(m_ascii.GetEmptyImage(), res, 0, 0, 100f, 100f);
             Console.Write(res);
         }
+
+        datas.Save();
     }
 
     public static void Main()
@@ -54,7 +57,9 @@ class Progam
         Colored.ResetColor();
 
         JsonFileManager jsonFileManager = new JsonFileManager();
-        GameLoop();
+        
+        
+        //GameLoop();
         Colored.ResetColor();
     }
 

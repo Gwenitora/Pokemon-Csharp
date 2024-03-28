@@ -25,12 +25,4 @@
     {
         team.Remove(chakimon);
     }
-    public void SaveTeam(JsonFileManager jsonFileManager)
-    {
-        jsonFileManager.SaveToJsonFile(team, "team_data.json");
-    }
-    public void SaveAllCatchedChakimon(JsonFileManager jsonFileManager)
-    {
-        jsonFileManager.SaveToJsonFile(allCatchedChakimon, "all_catched_chakimon_data.json");
-    }
 }

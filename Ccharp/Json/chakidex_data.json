@@ -15,7 +15,12 @@
       "critvalue": 3,
       "pvmax": 22
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 22
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-rmeur",
@@ -33,7 +38,12 @@
       "critvalue": 2,
       "pvmax": 27
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 27
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-man",
@@ -51,7 +61,12 @@
       "critvalue": 1,
       "pvmax": 19
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 19
+>>>>>>> Stashed changes
   },
 
   {
@@ -70,7 +85,12 @@
       "critvalue": 3,
       "pvmax": 22
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 22
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-rmeur",
@@ -88,7 +108,12 @@
       "critvalue": 2,
       "pvmax": 27
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 27
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-man",
@@ -106,7 +131,12 @@
       "critvalue": 1,
       "pvmax": 19
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 19
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-peau",
@@ -124,7 +154,12 @@
       "critvalue": 4,
       "pvmax": 25
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 25
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-fouin",
@@ -142,7 +177,12 @@
       "critvalue": 6,
       "pvmax": 28
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 28
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-lutier",
@@ -160,7 +200,12 @@
       "critvalue": 5,
       "pvmax": 21
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 21
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-meau",
@@ -178,7 +223,12 @@
       "critvalue": 7,
       "pvmax": 30
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 30
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-rnière",
@@ -196,7 +246,12 @@
       "critvalue": 8,
       "pvmax": 26
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 26
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-teau",
@@ -214,7 +269,12 @@
       "critvalue": 10,
       "pvmax": 20
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 20
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-pito",
@@ -232,7 +292,12 @@
       "critvalue": 9,
       "pvmax": 29
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 29
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-grin",
@@ -250,7 +315,12 @@
       "critvalue": 6,
       "pvmax": 24
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 24
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-llenge",
@@ -268,7 +338,12 @@
       "critvalue": 3,
       "pvmax": 17
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 17
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-let",
@@ -286,7 +361,12 @@
       "critvalue": 5,
       "pvmax": 23
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 23
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-loupe",
@@ -304,7 +384,12 @@
       "critvalue": 4,
       "pvmax": 18
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 18
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-leur",
@@ -322,7 +407,12 @@
       "critvalue": 1,
       "pvmax": 15
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 15
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-lumeau",
@@ -340,7 +430,12 @@
       "critvalue": 7,
       "pvmax": 22
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 22
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-maille",
@@ -358,7 +453,12 @@
       "critvalue": 2,
       "pvmax": 27
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 27
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-rgeur",
@@ -376,7 +476,12 @@
       "critvalue": 8,
       "pvmax": 14
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 14
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-b",
@@ -394,7 +499,12 @@
       "critvalue": 3,
       "pvmax": 19
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 19
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-bite",
@@ -412,7 +522,12 @@
       "critvalue": 9,
       "pvmax": 29
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 29
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-sseur",
@@ -430,7 +545,12 @@
       "critvalue": 5,
       "pvmax": 25
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 25
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-kira",
@@ -448,7 +568,12 @@
       "critvalue": 9,
       "pvmax": 30
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 30
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-d",
@@ -466,7 +591,12 @@
       "critvalue": 4,
       "pvmax": 21
     },
+<<<<<<< Updated upstream
     "level": 1
+=======
+    "level": 1,
+    "pv": 21
+>>>>>>> Stashed changes
   },
   {
     "name": "Cha-bbat",
@@ -484,6 +614,7 @@
       "critvalue": 2,
       "pvmax": 16
     },
+<<<<<<< Updated upstream
     "level": 1
   }
 
@@ -491,3 +622,9 @@
 ]
 
 
+=======
+    "level": 1,
+    "pv" :  16
+  }
+]
+>>>>>>> Stashed changes

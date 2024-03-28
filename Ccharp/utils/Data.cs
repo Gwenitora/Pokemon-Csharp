@@ -1,5 +1,4 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 public class Data
 {
@@ -18,10 +17,12 @@ public class Data
 
     string chakimonCatchedPath = "chakimon_catched_data.json";
 
-    public Data()
-    {
-        JsonFileManager jsonFileManager = new JsonFileManager();
-        
+    JsonFileManager fileManager;
+
+    public Data(JsonFileManager jsonFileManager)
+    {        
+        fileManager = jsonFileManager;
+
         string attacksText = jsonFileManager.LoadFile(attackPath);
         attacks = JsonConvert.DeserializeObject<List<Attack>>(attacksText);
 
@@ -44,6 +45,15 @@ public class Data
             if (allChakimonCatchedText.Length > 0)
                 chakimonCatched = JsonConvert.DeserializeObject<ChakimonCatched>(allChakimonCatchedText);
         }
+    }
+
+    public void Save()
+    {
+        fileManager.SaveToJsonFile(attacks, attackPath);
+        fileManager.SaveToJsonFile(chakidex, chakidexPath);
+        fileManager.SaveToJsonFile(typeTable, typeTablePath);
+        fileManager.SaveToJsonFile(itemList, itemsPath);
+        fileManager.SaveToJsonFile(chakimonCatched, chakimonCatchedPath);
     }
 
     public List<Attack> GetAttackList()

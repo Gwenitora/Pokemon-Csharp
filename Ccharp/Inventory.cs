@@ -11,9 +11,4 @@ public class Inventory
     {
         inventory.Remove(obj);
     }
-
-    public void SaveInventory(JsonFileManager jsonFileManager)
-    {
-        jsonFileManager.SaveToJsonFile(inventory, "inventory");
-    }
 }
