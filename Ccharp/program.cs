@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Drawing;
 
-class Progam
+class Program
 {
-    static List<string> imgToLoad = new List<string>()
+    public static List<string> imgToLoad = new List<string>()
     {
         "cat-example.png",
         "star.png",
@@ -42,6 +42,8 @@ class Progam
             var _h = Console.WindowHeight;
             var _w = Console.WindowWidth;
             if (_h <= 0 || _w <= 0) continue;
+
+
 
             m_scene_manager.Fight(datas, datas.GetChakimonList()[1]);
             //m_scene_manager.Game(m_map, m_ascii, m_input);

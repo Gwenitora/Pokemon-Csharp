@@ -9,6 +9,8 @@ public class FightScene
     Chakimon chakimonAlly;
     Chakimon chakimonEnnemy;
 
+    Ascii m_ascii = new Ascii();
+
     bool isFinish = false;
 
     public FightScene(Data data, Chakimon chakimon)
@@ -26,9 +28,15 @@ public class FightScene
         bool playerTurn = true;
         while (isFinish == false)
         {
-            Console.WriteLine(playerTurn);
+            Console.SetCursorPosition(0, 0);
+            var bg = m_ascii.LoadImg(Program.imgToLoad[2]);
+            //var res = m_ascii.Adding(bg, Program.imgToLoad[1], -10, -50, 30f, 30f);
+            //res = m_ascii.Adding(m_ascii.GetEmptyImage(), res, 0, 0, 100f, 100f);
+            //Console.Write(bg);
+
+            //Console.WriteLine(playerTurn);
             PlayerTurn(playerTurn);
-            Console.WriteLine(chakimonEnnemy.pv);
+            //Console.WriteLine(chakimonEnnemy.pv);
             playerTurn = !playerTurn;
         }
         //Change de scene
@@ -42,7 +50,7 @@ public class FightScene
             if(isOwnTurn)
             {
                 Attack attack = ChooseAttack(chakimonAlly);
-                Console.WriteLine($"Attack :{attack.name}");
+                //Console.WriteLine($"Attack :{attack.name}");
                 if(attack != null)
                 {
                     Attack(chakimonAlly, chakimonEnnemy, attack);
@@ -114,7 +122,7 @@ public class FightScene
                     }
                     chakimonWhichIsAttacked.TakeDamage(damage);
                 }
-                Console.WriteLine(damage);
+                //Console.WriteLine(damage);
                 break;
             }
         }
