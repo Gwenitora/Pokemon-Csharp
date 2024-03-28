@@ -5,9 +5,9 @@ public class Data
     private List<Attack> attacks = new List<Attack>();
     private List<Chakimon> chakidex = new List<Chakimon>();
     private List<TypeTable> typeTable = new List<TypeTable>();
-    
     private List<Item> itemList = new List<Item>();
 
+    private Inventory inventory = new Inventory();
     private ChakimonCatched chakimonCatched = new ChakimonCatched();
 
     string attackPath = "attack_data.json";
@@ -15,6 +15,7 @@ public class Data
     string typeTablePath = "typetable_data.json";
     string itemsPath = "object_data.json";
 
+    string inventoryPath = "inventory_data.json";
     string chakimonCatchedPath = "chakimon_catched_data.json";
 
     JsonFileManager fileManager;
@@ -39,6 +40,14 @@ public class Data
         };
         itemList = JsonConvert.DeserializeObject<List<Item>>(itemsText, settings);
 
+
+        if (jsonFileManager.FoundFile(inventoryPath))
+        {
+            string inventoryText = jsonFileManager.LoadFile(inventoryPath, true);
+            if (inventoryText.Length > 0)
+                chakimonCatched = JsonConvert.DeserializeObject<ChakimonCatched>(inventoryText);
+        }
+
         if (jsonFileManager.FoundFile(chakimonCatchedPath))
         {
             string allChakimonCatchedText = jsonFileManager.LoadFile(chakimonCatchedPath, true);
@@ -49,11 +58,8 @@ public class Data
 
     public void Save()
     {
-        fileManager.SaveToJsonFile(attacks, attackPath);
-        fileManager.SaveToJsonFile(chakidex, chakidexPath);
-        fileManager.SaveToJsonFile(typeTable, typeTablePath);
-        fileManager.SaveToJsonFile(itemList, itemsPath);
         fileManager.SaveToJsonFile(chakimonCatched, chakimonCatchedPath);
+        fileManager.SaveToJsonFile(inventory, inventoryPath);
     }
 
     public List<Attack> GetAttackList()
@@ -71,6 +77,11 @@ public class Data
     public List<Item> GetItemList()
     {
         return itemList;
+    }
+
+    public Inventory GetInventory()
+    {
+        return inventory;
     }
 
     public ChakimonCatched GetTeamList()

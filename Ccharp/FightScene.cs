@@ -27,8 +27,9 @@ public class FightScene
         bool playerTurn = true;
         while (isFinish == false)
         {
+            Console.WriteLine(playerTurn);
             PlayerTurn(playerTurn);
-            Console.WriteLine(chakimonAlly.pv);
+            Console.WriteLine(chakimonEnnemy.pv);
             playerTurn = !playerTurn;
         }
         //Change de scene
@@ -42,6 +43,7 @@ public class FightScene
             if(isOwnTurn)
             {
                 Attack attack = ChooseAttack(chakimonAlly);
+                Console.WriteLine($"Attack :{attack.name}");
                 if(attack != null)
                 {
                     Attack(chakimonAlly, chakimonEnnemy, attack);
@@ -57,6 +59,7 @@ public class FightScene
             else
             {
                 // IA
+                isPlayerTurnFinish = true;
             }
         }
     }
@@ -84,7 +87,7 @@ public class FightScene
             if (typeTable._type == attack._type)
             {
                 weakness weakness = typeTable.weakness[typeChakimonWhichIsAttacked];
-                float damage = (float)(((chakimonThatAttacks.Level * 0.4f + 2) * chakimonThatAttacks.Stats.Attaque * attack.damage) / chakimonWhichIsAttacked.Stats.Defense * 50.0f) + 2;
+                float damage = (((chakimonThatAttacks.Level * 0.4f + 2) * chakimonThatAttacks.Stats.Attaque * attack.damage) / (chakimonWhichIsAttacked.Stats.Defense * 50.0f)) + 2;
 
                 if (weakness == weakness.RESISTANT)
                 {
@@ -112,6 +115,7 @@ public class FightScene
                     }
                     chakimonWhichIsAttacked.TakeDamage(damage);
                 }
+                Console.WriteLine(damage);
                 break;
             }
         }

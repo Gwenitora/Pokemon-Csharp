@@ -20,7 +20,10 @@ class Progam
         
         JsonFileManager m_jsonFileManager = new JsonFileManager();
         Data datas = new Data(m_jsonFileManager);
+        datas.GetTeamList().team.Add(datas.GetChakimonList()[2]);
         datas.Save();
+
+
 
         foreach (Item item in datas.GetItemList())
         {
@@ -32,6 +35,9 @@ class Progam
         int posY = 0;
         while (true)
         {
+            FightScene fs = new FightScene(datas, datas.GetChakimonList().First());
+            fs.FightSceneGameLoop();
+
             posX += Rnd.Next(-10, 11);
             posY += Rnd.Next(-10, 11);
 
@@ -48,8 +54,6 @@ class Progam
             res = m_ascii.Adding(m_ascii.GetEmptyImage(), res, 0, 0, 100f, 100f);
             Console.Write(res);
         }
-
-        datas.Save();
     }
 
     public static void Main()
@@ -57,7 +61,6 @@ class Progam
         Colored.ResetColor();
 
         JsonFileManager jsonFileManager = new JsonFileManager();
-        
         
         GameLoop();
         Colored.ResetColor();
