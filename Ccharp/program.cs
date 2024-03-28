@@ -6,7 +6,8 @@ class Progam
     static List<string> imgToLoad = new List<string>()
     {
         "cat-example.png",
-        "star.png"
+        "star.png",
+        "background.png"
     };
 
     static Random rnd = new Random();
@@ -16,13 +17,13 @@ class Progam
 
     private static void GameLoop()
     {
+        SceneManager m_scene_manager = new SceneManager();
         Ascii m_ascii = new Ascii();
 
         JsonFileManager m_jsonFileManager = new JsonFileManager();
         Data datas = new Data(m_jsonFileManager);
         datas.GetTeamList().team.Add(datas.GetChakimonList()[2]);
         datas.Save();
-
 
 
         foreach (Item item in datas.GetItemList())
@@ -34,22 +35,19 @@ class Progam
         var m_map = new Map();
         var m_input = new InputManager();
 
+        //Console.Clear();
         while (true)
-        {
-            FightScene fs = new FightScene(datas, datas.GetChakimonList().First());
-            fs.FightSceneGameLoop();
-
+        { 
             // TODO: don't touch next paragraphe
             var _h = Console.WindowHeight;
             var _w = Console.WindowWidth;
             if (_h <= 0 || _w <= 0) continue;
 
-            var res = m_map.GetDraw(m_ascii.GetEmptyImage(), m_ascii, m_input.CursorPos.X, m_input.CursorPos.Y);
-
-            // TODO: don't touch next paragraphe
-            Console.Write(res);
-            Console.SetCursorPosition(0, 0);
-            m_input.SetCursorPos(m_map);
+            m_scene_manager.Fight(datas, datas.GetChakimonList()[1]);
+            //m_scene_manager.Game(m_map, m_ascii, m_input);
+            
+            
+            
         }
     }
 
