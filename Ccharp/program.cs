@@ -11,6 +11,7 @@
 
     private static void GameLoop()
     {
+        SceneManager sceneManager = new SceneManager();
         Ascii m_ascii = new Ascii();
         var task1 = Task.Run(() => Preload(m_ascii));
         var m_map = new Map();
@@ -22,6 +23,14 @@
             var _h = Console.WindowHeight;
             var _w = Console.WindowWidth;
             if (_h <= 0 || _w <= 0) continue;
+
+            sceneManager.UpdateCurrentScene();
+
+            if (sceneManager.GetCurrentScene() == Scene.GameOver)
+            {
+                break;
+            }
+
 
             var res = m_map.GetDraw(m_ascii.GetEmptyImage(), m_ascii, m_input.CursorPos.X, m_input.CursorPos.Y);
 
