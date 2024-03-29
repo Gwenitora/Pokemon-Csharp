@@ -79,24 +79,40 @@ public class InputManager
         }
     }
     
-    public void SetCursorPos(Map m_map)
+    public void SetCursorPos(Map m_map, SceneManager m_scene_manager, Data datas)
     {
         GetKeyState();
         if ((KeyStates[ConsoleKey.LeftArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.LeftArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.LEFT).Substring(3, 1) == " ")
         {
             cursorPos.X--;
+            if (m_map.getIfGreen())
+            {
+                m_scene_manager.Fight(datas, datas.GetChakimonList()[1]);
+            }
         }
         else if ((KeyStates[ConsoleKey.RightArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.RightArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.RIGHT).Substring(3, 1) == " ")
         {
             cursorPos.X++;
+            if (m_map.getIfGreen())
+            {
+                m_scene_manager.Fight(datas, datas.GetChakimonList()[1]);
+            }
         }
         else if ((KeyStates[ConsoleKey.UpArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.UpArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.DOWN).Substring(3, 1) == " ")
         {
             cursorPos.Y++;
+            if (m_map.getIfGreen())
+            {
+                m_scene_manager.Fight(datas, datas.GetChakimonList()[1]);
+            }
         }
         else if ((KeyStates[ConsoleKey.DownArrow] == KeyState.PRESSED || KeyStates[ConsoleKey.DownArrow] == KeyState.HELD) && m_map.getTile().GetBorder(rotationTile.UP).Substring(3, 1) == " ")
         {
             cursorPos.Y--;
+            if (m_map.getIfGreen())
+            {
+                m_scene_manager.Fight(datas, datas.GetChakimonList()[1]);
+            }
         }
     }
 }

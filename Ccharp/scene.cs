@@ -52,14 +52,14 @@ public class SceneManager
 
     }
 
-    public void Game(Map map, Ascii ascii, InputManager input)
+    public void Game(Map map, Ascii ascii, InputManager input, Data data)
     {
         Console.WriteLine("Vous êtes en jeu.");
         // TODO: don't touch next paragraphe
         var res = map.GetDraw(ascii.GetEmptyImage(), ascii, input.CursorPos.X, input.CursorPos.Y);
         Console.Write(res);
         Console.SetCursorPosition(0, 0);
-        input.SetCursorPos(map);
+        input.SetCursorPos(map, this, data);
     }
 
     public void GameOver()

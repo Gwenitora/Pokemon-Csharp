@@ -330,4 +330,14 @@ public class Map
     {
         return tiles[map[x][y]];
     }
+
+    internal bool getIfGreen()
+    {
+        return getIfGreen(pastX, pastY);
+    }
+
+    internal bool getIfGreen(int x, int y)
+    {
+        return grassMap[x][y];
+    }
 }

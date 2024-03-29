@@ -29,42 +29,33 @@ public class FightScene
         bool playerTurn = true;
         while (isFinish == false)
         {
+            bool isPlayerTurnFinish = false;
             Console.SetCursorPosition(0, 0);
             var bg = m_ascii.LoadImg(Program.imgToLoad[2]);
             var res = m_ascii.Adding(bg, Program.imgToLoad[3], -25, -19, 50f, 50f);
             res = m_ascii.Adding(res, Program.imgToLoad[4], 25, -19, 50f, 50f);
             res = m_ascii.Adding(m_ascii.GetEmptyImage(), res, 0, 0, 100f, 100f);
+
             Console.Write(res);
-
-            Console.WriteLine(playerTurn);
-            //PlayerTurn(playerTurn);
-            //Console.WriteLine(chakimonEnnemy.pv);
-            playerTurn = !playerTurn;
-        }
-        //Change de scene
-    }
-
-    public void PlayerTurn(bool isOwnTurn)
-    {
-        bool isPlayerTurnFinish = false;
-        while (isPlayerTurnFinish == false)
-        {
-            Console.Clear();
+            Colored.ResetColor();
             Console.WriteLine($"Ennemy stats : \n name : {chakimonEnnemy.Name} lvl. {chakimonEnnemy.Level}\n pv : {chakimonEnnemy.pv}\n");
             Console.WriteLine($"Ally stats : \n name : {chakimonAlly.Name} lvl. {chakimonEnnemy.Level}\n pv : {chakimonAlly.pv}\n");
 
 
-            if(isOwnTurn)
+            if (playerTurn)
             {
                 Attack attack = ChooseAttack(chakimonAlly);
                 //Console.WriteLine($"Attack :{attack.name}");
-                if(attack != null)
+                if (attack != null)
                 {
                     Attack(chakimonAlly, chakimonEnnemy, attack);
                     isFinish = IsWin(chakimonEnnemy);
-                    Console.Clear();
-                    Console.WriteLine("You win");
-                    chakimonAlly.Level += 1;
+                    if(isFinish)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You win");
+                        chakimonAlly.Level += 1;
+                    }
                     isPlayerTurnFinish = true;
                 }
             }
@@ -72,12 +63,20 @@ public class FightScene
             {
                 IA();
                 isFinish = IsWin(chakimonAlly);
-                Console.Clear();
-                Console.WriteLine("You lose...");
+                if (isFinish)
+                {
+                    Console.Clear();
+                    Console.WriteLine("You lose...");
+                }
                 isPlayerTurnFinish = true;
-                
+
             }
+            if (isPlayerTurnFinish)
+            {
+                playerTurn = !playerTurn;
+            };
         }
+        //Change de scene
     }
 
     public Attack ChooseAttack(Chakimon chakimon)
