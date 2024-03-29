@@ -316,16 +316,20 @@ public class Ascii
         {
             for (int j = -(int)((float)size[1] / 2f + .5f); j < (int)((float)size[1] / 2f); j++)
             {
-                var c = imgDict2[i + (int)((float)size[0] / 2f + .5f)][j + (int)((float)size[1] / 2f + .5f)];
-                if (c.Contains("Y")) continue;
-                if (!keepSize || (imgDict1.ContainsKey(i + pctY) && imgDict1[i + pctY].ContainsKey(j + pctX)))
+                try
                 {
-                    if (!imgDict1.ContainsKey(i + pctY))
+                    var c = imgDict2[i + (int)((float)size[0] / 2f + .5f)][j + (int)((float)size[1] / 2f + .5f)];
+                    if (c.Contains("Y")) continue;
+                    if (!keepSize || (imgDict1.ContainsKey(i + pctY) && imgDict1[i + pctY].ContainsKey(j + pctX)))
                     {
-                        imgDict1[i + pctY] = new Dictionary<int, string>();
+                        if (!imgDict1.ContainsKey(i + pctY))
+                        {
+                            imgDict1[i + pctY] = new Dictionary<int, string>();
+                        }
+                        imgDict1[i + pctY][j + pctX] = c;
                     }
-                    imgDict1[i + pctY][j + pctX] = c;
                 }
+                catch (Exception) {}
             }
         }
         return Recompile(imgDict1);

@@ -30,13 +30,14 @@ public class FightScene
         while (isFinish == false)
         {
             Console.SetCursorPosition(0, 0);
-            //var bg = m_ascii.LoadImg(Program.imgToLoad[2]);
-            //var res = m_ascii.Adding(bg, Program.imgToLoad[1], -10, -50, 30f, 30f);
-            //res = m_ascii.Adding(m_ascii.GetEmptyImage(), res, 0, 0, 100f, 100f);
-            //Console.Write(bg);
+            var bg = m_ascii.LoadImg(Program.imgToLoad[2]);
+            var res = m_ascii.Adding(bg, Program.imgToLoad[3], -25, -19, 50f, 50f);
+            res = m_ascii.Adding(res, Program.imgToLoad[4], 25, -19, 50f, 50f);
+            res = m_ascii.Adding(m_ascii.GetEmptyImage(), res, 0, 0, 100f, 100f);
+            Console.Write(res);
 
-            //Console.WriteLine(playerTurn);
-            PlayerTurn(playerTurn);
+            Console.WriteLine(playerTurn);
+            //PlayerTurn(playerTurn);
             //Console.WriteLine(chakimonEnnemy.pv);
             playerTurn = !playerTurn;
         }

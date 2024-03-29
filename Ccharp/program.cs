@@ -7,7 +7,9 @@ class Program
     {
         "cat-example.png",
         "star.png",
-        "background.png"
+        "background.png",
+        "cat.png",
+        "cat2.png"
     };
 
     static Random rnd = new Random();
