@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Eventing.Reader;
 
 public class FightScene
 {
@@ -29,7 +30,7 @@ public class FightScene
         while (isFinish == false)
         {
             Console.SetCursorPosition(0, 0);
-            var bg = m_ascii.LoadImg(Program.imgToLoad[2]);
+            //var bg = m_ascii.LoadImg(Program.imgToLoad[2]);
             //var res = m_ascii.Adding(bg, Program.imgToLoad[1], -10, -50, 30f, 30f);
             //res = m_ascii.Adding(m_ascii.GetEmptyImage(), res, 0, 0, 100f, 100f);
             //Console.Write(bg);
@@ -47,6 +48,11 @@ public class FightScene
         bool isPlayerTurnFinish = false;
         while (isPlayerTurnFinish == false)
         {
+            Console.Clear();
+            Console.WriteLine($"Ennemy stats : \n name : {chakimonEnnemy.Name} lvl. {chakimonEnnemy.Level}\n pv : {chakimonEnnemy.pv}\n");
+            Console.WriteLine($"Ally stats : \n name : {chakimonAlly.Name} lvl. {chakimonEnnemy.Level}\n pv : {chakimonAlly.pv}\n");
+
+
             if(isOwnTurn)
             {
                 Attack attack = ChooseAttack(chakimonAlly);
@@ -54,17 +60,19 @@ public class FightScene
                 if(attack != null)
                 {
                     Attack(chakimonAlly, chakimonEnnemy, attack);
-                    if (chakimonEnnemy.pv == 0)
-                    {
-                        isFinish = true;
-                        
-                    }
+                    isFinish = IsWin(chakimonEnnemy);
+                    Console.Clear();
+                    Console.WriteLine("You win");
+                    chakimonAlly.Level += 1;
                     isPlayerTurnFinish = true;
                 }
             }
             else
             {
                 IA();
+                isFinish = IsWin(chakimonAlly);
+                Console.Clear();
+                Console.WriteLine("You lose...");
                 isPlayerTurnFinish = true;
                 
             }
@@ -73,18 +81,20 @@ public class FightScene
 
     public Attack ChooseAttack(Chakimon chakimon)
     {
-        while (true)
-        {
-            foreach (Attack attack in allAttacks)
-            { 
-                if (attack.name == chakimon.Attacks.FirstOrDefault().Key)
-                {
-                    return attack;                    
-                }
+        Console.Write($"your turn : \n 1. {chakimon.Attacks.Keys.ElementAt(0)}\n 2. {chakimon.Attacks.Keys.ElementAt(1)}\n 3. {chakimon.Attacks.Keys.ElementAt(2)}\n 4. {chakimon.Attacks.Keys.ElementAt(3)}\n\nYour choice : ");
+        string temp = Console.ReadLine();
+        int number_of_attack = Int32.Parse(temp);
+
+        foreach (Attack attack in allAttacks)
+        { 
+            if (attack.name == chakimon.Attacks.Keys.ElementAt(number_of_attack - 1))
+            {
+                return attack;                    
             }
         }
+        return allAttacks.FirstOrDefault();
     }
-
+     
     public void Attack(Chakimon chakimonThatAttacks, Chakimon chakimonWhichIsAttacked, Attack attack)
     {
         type typeChakimonThatAttacks = chakimonThatAttacks.Type;
@@ -132,18 +142,27 @@ public class FightScene
     {
         Random rnd = new Random();
         string attackChoose = chakimonEnnemy.Attacks.Keys.ElementAt(rnd.Next() % chakimonEnnemy.Attacks.Count);
+
+        Console.Write($"Ennemy's turn : \n 1. {chakimonEnnemy.Attacks.Keys.ElementAt(0)}\n 2. {chakimonEnnemy.Attacks.Keys.ElementAt(1)}\n 3. {chakimonEnnemy.Attacks.Keys.ElementAt(2)}\n 4. {chakimonEnnemy.Attacks.Keys.ElementAt(3)}\n\nHe's choice : {rnd.Next() % chakimonEnnemy.Attacks.Count + 1}");
+        Thread.Sleep(2000);
+
         foreach (Attack attack in allAttacks)
         {
             if (attack.name == chakimonEnnemy.Attacks.FirstOrDefault().Key)
             {
+
                 Attack(chakimonEnnemy, chakimonAlly, attack);
-                if (chakimonAlly.pv == 0)
-                {
-                    isFinish = true;
-                    break;
-                }
             }
         }
+    }
+
+    public bool IsWin(Chakimon chakimonEnnemy)
+    {
+        if (chakimonEnnemy.pv == 0)
+        {
+            return true;
+        }
+        return false;
     }
 }
 

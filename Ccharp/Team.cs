@@ -5,7 +5,7 @@
 
     public void Add(Chakimon chakimon)
     {
-        if (team.Count <= 6)
+        if (team.Count < 6)
         {
             team.Add(chakimon);
         }

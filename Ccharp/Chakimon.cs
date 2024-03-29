@@ -85,11 +85,47 @@ public class Chakimon : GameObject
             }
         }
     }
+
+    public Chakimon(string name, type type, int level) : base(0,0,0,0)
+    {
+        Name = name;
+        Type = type;
+        Attacks = new Dictionary<string, int>()
+        {
+            { "gratouille", 1 },
+            { "sieste", 1 },
+            { "chatouille", 1 },
+            { "Calinerie", 1  }
+        };
+
+        Stats = new Stats()
+        {
+            Attaque = 20,
+            Defense = 20,
+            Critvalue = 20,
+            Vitesse = 20,
+            Pvmax = 20,
+        };
+
+        Level = level;
+        pv = Stats.Pvmax;
+    }
+
     public void TakeDamage(float damage)
     {
-        if (pv < damage)
-            pv = 0;
-        else 
-            pv -= damage;
+        if (damage < 0)
+        {
+            if (-damage + pv >= Stats.Pvmax)
+                pv = Stats.Pvmax;
+            else 
+                pv -= damage;
+        }
+        else
+        {
+            if (pv < damage)
+                pv = 0;
+            else
+                pv -= damage;
+        }
     }
 }
